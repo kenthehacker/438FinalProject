@@ -14,11 +14,9 @@ final class GameView: UIView{
         }
     }
 
-    override func draw(_ rect: CGRect) {
+    func draw() {
         for item in items {
-            UIColor.red.set()
-            let bezPath = UIBezierPath(rect: item.hitBound)
-            bezPath.stroke()
+            item.draw()
         }
     }
     

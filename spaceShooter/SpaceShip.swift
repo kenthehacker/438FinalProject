@@ -12,7 +12,9 @@ class SpaceShip{
     var health: Int
     var size: Int
     let hitBound: CGRect
+    var col = UIColor.red
     init(location: CGPoint, size:Int){
+        col.setFill()
         self.health = 100
         self.curLoc = location
         self.size = size
@@ -31,5 +33,13 @@ class SpaceShip{
     }
     func contains(point: CGPoint) -> Bool{
         return true
+    }
+    func draw(){
+        //UIColor.red.setFill()
+        
+        let bezPath = UIBezierPath(rect: self.hitBound)
+        
+        //bezPath.stroke()
+        //bezPath.fill()
     }
 }

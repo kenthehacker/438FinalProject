@@ -14,6 +14,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameView = GameView(frame: canvas.frame)
+        
+        
+        let meap = CGPoint(x: 50, y: 50)
+        let spaceShit = SpaceShip(location: meap, size: 25)
+        gameView.items.append(spaceShit)
+        
         // Do any additional setup after loading the view.
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -22,7 +28,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             //set the location
             if gameView.items[i].contains(point: touchPoint){
                 gameView.items[i].updateLocation(newLoc: touchPoint)
-                
             }
         }
     }
@@ -32,7 +37,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             //set the location
             if gameView.items[i].contains(point: touchPoint){
                 gameView.items[i].updateLocation(newLoc: touchPoint)
-                
+                print("touchMoved")
+                gameView.draw()
             }
         }
     }
