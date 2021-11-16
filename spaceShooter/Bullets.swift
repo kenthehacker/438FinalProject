@@ -12,7 +12,7 @@ class Bullet: MovableObject{
     var curLoc: CGPoint
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.red
+    var col = UIColor.white
     let speed = CGFloat(10)
     required init(location: CGPoint, size: Int){
         self.size = size
@@ -37,7 +37,7 @@ class Bullet: MovableObject{
         col.setFill()
         self.updateLocation(newLoc: self.curLoc)
         let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.stroke()
+        bezPath.fill()
         
     }
 }

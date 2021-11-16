@@ -8,7 +8,8 @@
 import UIKit
 
 var gameClock: CADisplayLink?
-
+var screenWidth = 370
+var screenHeight = 700
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var tick = 0
@@ -75,7 +76,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func addBullet(){
         print("making bullet")
-        let tempBullet = Bullet(location: currentLocation!, size: 20)
+        let tempLocation = CGPoint(x: currentLocation!.x, y: 690)
+        let tempBullet = Bullet(location: tempLocation, size: 20)
         gameView.items.append(tempBullet)
         
     }

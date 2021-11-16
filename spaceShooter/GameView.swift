@@ -15,11 +15,29 @@ final class GameView: UIView{
             setNeedsDisplay()
         }
     }
-
+    var stars: [MovableObject] = [] {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     func drawSpace(){
         //self.mainCharacter.draw()
     }
     
+    func drawStars(){
+        var i = 0
+        while stars.count < 50{
+            stars.append(ShootingStar(location: CGPoint(x: 0, y: 0), size: 0))
+        }
+        while i < stars.count{
+            stars[i].draw()
+            if Int(stars[i].getY()) > screenHeight{
+                stars.remove(at: i)
+                i = i-1
+            }
+            i = i + 1
+        }
+    }
     
     override func draw(_ rect: CGRect) {
         var i = 0
@@ -32,7 +50,7 @@ final class GameView: UIView{
             i = i+1
         }
         self.mainCharacter.draw()
-        
+        drawStars()
     }
     
     /// Returns the topmost item, if there is any, at a given point in the view.

@@ -8,13 +8,11 @@
 import Foundation
 import UIKit
 class SpaceShip: MovableObject{
-    var magazine: [Bullet] = []
-    
     var curLoc: CGPoint
     var health: Int
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.red
+    var col = UIColor.white
     required init(location: CGPoint, size:Int){
         self.health = 100
         self.curLoc = location
@@ -49,7 +47,7 @@ class SpaceShip: MovableObject{
     func draw(){
         col.setFill()
         let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.stroke()
+        bezPath.fill()
     }
     
 }
