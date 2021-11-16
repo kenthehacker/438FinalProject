@@ -7,13 +7,14 @@
 
 import Foundation
 import UIKit
-class SpaceShip{
+class SpaceShip: MovableObject{
+
     var curLoc: CGPoint
     var health: Int
     var size: Int
     var hitBound: CGRect
     var col = UIColor.red
-    init(location: CGPoint, size:Int){
+    required init(location: CGPoint, size:Int){
         self.health = 100
         self.curLoc = location
         self.size = size

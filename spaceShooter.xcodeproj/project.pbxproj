@@ -17,6 +17,7 @@
 		362C4A9A274337DF0050A97C /* spaceShooterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4A99274337DF0050A97C /* spaceShooterUITests.swift */; };
 		362C4AA8274338380050A97C /* SpaceShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AA7274338380050A97C /* SpaceShip.swift */; };
 		362C4AAC27433B660050A97C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AAB27433B660050A97C /* GameView.swift */; };
+		362C4AAE27435BD60050A97C /* MovableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AAD27435BD60050A97C /* MovableObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		362C4A9B274337DF0050A97C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		362C4AA7274338380050A97C /* SpaceShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShip.swift; sourceTree = "<group>"; };
 		362C4AAB27433B660050A97C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		362C4AAD27435BD60050A97C /* MovableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				362C4A85274337DE0050A97C /* Info.plist */,
 				362C4AA7274338380050A97C /* SpaceShip.swift */,
 				362C4AAB27433B660050A97C /* GameView.swift */,
+				362C4AAD27435BD60050A97C /* MovableObject.swift */,
 			);
 			path = spaceShooter;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				362C4A7C274337DB0050A97C /* ViewController.swift in Sources */,
+				362C4AAE27435BD60050A97C /* MovableObject.swift in Sources */,
 				362C4A78274337DB0050A97C /* AppDelegate.swift in Sources */,
 				362C4AA8274338380050A97C /* SpaceShip.swift in Sources */,
 				362C4A7A274337DB0050A97C /* SceneDelegate.swift in Sources */,

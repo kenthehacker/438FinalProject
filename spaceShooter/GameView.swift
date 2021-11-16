@@ -8,7 +8,7 @@
 import UIKit
 
 final class GameView: UIView{
-    var items: [SpaceShip] = [] {
+    var items: [MovableObject] = [] {
         didSet {
             setNeedsDisplay()
         }
@@ -24,7 +24,7 @@ final class GameView: UIView{
     /// Returns the topmost item, if there is any, at a given point in the view.
     /// - Parameter location: The point within the view to look at.
     /// - Returns: The topmost (last added) item, or `nil` if there is none.
-    func itemAtLocation(_ location: CGPoint) -> SpaceShip? {
+    func itemAtLocation(_ location: CGPoint) -> MovableObject? {
         return items.last { $0.contains(point: location) }
     }
 }
