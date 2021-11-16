@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
+    
     @IBOutlet weak var canvas: GameView!
     var gameView: GameView!
     override func viewDidLoad() {
