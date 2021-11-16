@@ -8,23 +8,30 @@
 import UIKit
 
 final class GameView: UIView{
+    var mainCharacter = SpaceShip(location: CGPoint(x: 4, y: 4), size: 0)
+    
     var items: [MovableObject] = [] {
         didSet {
             setNeedsDisplay()
         }
     }
 
+    func drawSpace(){
+        //self.mainCharacter.draw()
+    }
+    
+    
     override func draw(_ rect: CGRect) {
         var i = 0
         while i < items.count{
             items[i].draw()
-            
             if items[i].getY()<0{
                 items.remove(at: i)
                 i = i - 1
             }
             i = i+1
         }
+        self.mainCharacter.draw()
         
     }
     
