@@ -11,10 +11,9 @@ class SpaceShip{
     var curLoc: CGPoint
     var health: Int
     var size: Int
-    let hitBound: CGRect
+    var hitBound: CGRect
     var col = UIColor.red
     init(location: CGPoint, size:Int){
-        col.setFill()
         self.health = 100
         self.curLoc = location
         self.size = size
@@ -29,17 +28,31 @@ class SpaceShip{
         return self.curLoc.y
     }
     func updateLocation(newLoc: CGPoint){
+        print("updating location")
+        print("xLocation: \(curLoc.x)")
         self.curLoc = newLoc
+        let cgSize = CGFloat(size)
+        let hardY = CGFloat(700)
+        var hardX = curLoc.x
+        if curLoc.x < 0{
+            hardX = CGFloat(0)
+        }
+        if curLoc.x > 370{
+            hardX = CGFloat(370-self.size)
+        }
+        self.hitBound = CGRect(x: hardX, y: hardY, width: cgSize, height: cgSize)
+     
     }
     func contains(point: CGPoint) -> Bool{
         return true
     }
     func draw(){
-        //UIColor.red.setFill()
         
+        col.setFill()
         let bezPath = UIBezierPath(rect: self.hitBound)
         
-        //bezPath.stroke()
+        bezPath.stroke()
         //bezPath.fill()
     }
+    
 }

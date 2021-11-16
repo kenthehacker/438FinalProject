@@ -9,14 +9,15 @@ import UIKit
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var canvas: GameView!
-    var gameView: GameView!
+
+    @IBOutlet weak var gameView: GameView!
+    //var gameView: GameView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        gameView = GameView(frame: canvas.frame)
+        //gameView = GameView(frame: canvas.frame)
         
         
-        let meap = CGPoint(x: 50, y: 50)
+        let meap = CGPoint(x: 50, y: 700)
         let spaceShit = SpaceShip(location: meap, size: 25)
         gameView.items.append(spaceShit)
         
@@ -37,11 +38,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             //set the location
             if gameView.items[i].contains(point: touchPoint){
                 gameView.items[i].updateLocation(newLoc: touchPoint)
-                print("touchMoved")
-                gameView.draw()
+               
+                
+                //gameView.draw(gameView)
             }
         }
+        gameView.setNeedsDisplay()
+    
     }
+    
 
 }
 

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "5F9A9A29-6133-4FF4-8ACD-662276CAC50B"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "662E58D6-A223-416F-816D-AE228F3F249B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spaceShooter/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "662E58D6-A223-416F-816D-AE228F3F249B - 454934b3342d5b59"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.gameView.getter : Swift.Optional&lt;spaceShooter.GameView&gt;"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "662E58D6-A223-416F-816D-AE228F3F249B - 7fb1fac97d6778ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.gameView.setter : Swift.Optional&lt;spaceShooter.GameView&gt;"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "155">
+               </Location>
+               <Location
+                  uuid = "662E58D6-A223-416F-816D-AE228F3F249B - a7ebaa2d55c5eaa9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.gameView.modify : Swift.Optional&lt;spaceShooter.GameView&gt;"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "662E58D6-A223-416F-816D-AE228F3F249B - 689a2ee0a8717293"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.gameView.modify : Swift.Optional&lt;spaceShooter.GameView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "662E58D6-A223-416F-816D-AE228F3F249B - 23394291aa8b83fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; spaceShooter.ViewController"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "662E58D6-A223-416F-816D-AE228F3F249B - 702192f9764ffa47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;spaceShooter.ViewController&gt;"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4D662DF5-7526-4BE2-AAE7-723892DFF118"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spaceShooter/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "4D662DF5-7526-4BE2-AAE7-723892DFF118 - d7fca1169e091bd8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; spaceShooter.ViewController"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "4D662DF5-7526-4BE2-AAE7-723892DFF118 - 23394291aa8b83fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; spaceShooter.ViewController"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "4D662DF5-7526-4BE2-AAE7-723892DFF118 - 8e16343330ce74a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;spaceShooter.ViewController&gt;"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "4D662DF5-7526-4BE2-AAE7-723892DFF118 - 702192f9764ffa47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;spaceShooter.ViewController&gt;"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "4D662DF5-7526-4BE2-AAE7-723892DFF118 - e78561b96ba8cae5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spaceShooter.ViewController.__deallocating_deinit"
+                  moduleName = "spaceShooter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenichimatsuo/Desktop/Local%202021-2022/438/finalProj/gitSpaceShooter/438FinalProject/spaceShooter/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

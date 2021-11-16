@@ -14,7 +14,8 @@ final class GameView: UIView{
         }
     }
 
-    func draw() {
+    override func draw(_ rect: CGRect) {
+        
         for item in items {
             item.draw()
         }
