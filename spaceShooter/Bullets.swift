@@ -13,7 +13,7 @@ class Bullet: MovableObject{
     var size: Int
     var hitBound: CGRect
     var col = UIColor.red
-    let speed = CGFloat(5)
+    let speed = CGFloat(10)
     required init(location: CGPoint, size: Int){
         self.size = size
         self.curLoc = location
