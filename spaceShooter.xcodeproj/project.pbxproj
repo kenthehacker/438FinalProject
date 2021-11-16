@@ -18,6 +18,7 @@
 		362C4AA8274338380050A97C /* SpaceShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AA7274338380050A97C /* SpaceShip.swift */; };
 		362C4AAC27433B660050A97C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AAB27433B660050A97C /* GameView.swift */; };
 		362C4AAE27435BD60050A97C /* MovableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AAD27435BD60050A97C /* MovableObject.swift */; };
+		362C4AB027435DB30050A97C /* Bullets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AAF27435DB30050A97C /* Bullets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		362C4AA7274338380050A97C /* SpaceShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceShip.swift; sourceTree = "<group>"; };
 		362C4AAB27433B660050A97C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		362C4AAD27435BD60050A97C /* MovableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableObject.swift; sourceTree = "<group>"; };
+		362C4AAF27435DB30050A97C /* Bullets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				362C4AA7274338380050A97C /* SpaceShip.swift */,
 				362C4AAB27433B660050A97C /* GameView.swift */,
 				362C4AAD27435BD60050A97C /* MovableObject.swift */,
+				362C4AAF27435DB30050A97C /* Bullets.swift */,
 			);
 			path = spaceShooter;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				362C4AB027435DB30050A97C /* Bullets.swift in Sources */,
 				362C4A7C274337DB0050A97C /* ViewController.swift in Sources */,
 				362C4AAE27435BD60050A97C /* MovableObject.swift in Sources */,
 				362C4A78274337DB0050A97C /* AppDelegate.swift in Sources */,

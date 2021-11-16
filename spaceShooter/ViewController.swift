@@ -38,8 +38,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             //set the location
             if gameView.items[i].contains(point: touchPoint){
                 gameView.items[i].updateLocation(newLoc: touchPoint)
-               
-                
+                let tempBullet = Bullet(location: touchPoint, size: 20)
+                gameView.items.append(tempBullet)
                 //gameView.draw(gameView)
             }
         }

@@ -15,10 +15,17 @@ final class GameView: UIView{
     }
 
     override func draw(_ rect: CGRect) {
-        
-        for item in items {
-            item.draw()
+        var i = 0
+        while i < items.count{
+            items[i].draw()
+            
+            if items[i].getY()<0{
+                items.remove(at: i)
+                i = i - 1
+            }
+            i = i+1
         }
+        
     }
     
     /// Returns the topmost item, if there is any, at a given point in the view.
