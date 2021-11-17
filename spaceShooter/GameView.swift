@@ -9,13 +9,18 @@ import UIKit
 
 final class GameView: UIView{
     var mainCharacter = SpaceShip(location: CGPoint(x: 4, y: 4), size: 0)
-    
+    var numEnemy = 0
     var items: [MovableObject] = [] {
         didSet {
             setNeedsDisplay()
         }
     }
     var stars: [MovableObject] = [] {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    var enemies: [MovableObject] = [] {
         didSet {
             setNeedsDisplay()
         }
@@ -38,19 +43,28 @@ final class GameView: UIView{
             i = i + 1
         }
     }
+    func drawEnemies() {
+        var i = 0
+        while i < enemies.count{
+            enemies[i].draw()
+            i = i+1
+        }
+    }
     
     override func draw(_ rect: CGRect) {
         var i = 0
         while i < items.count{
             items[i].draw()
-            if items[i].getY()<0{
+            if items[i].getY() > 750{
                 items.remove(at: i)
                 i = i - 1
             }
+            
             i = i+1
         }
         self.mainCharacter.draw()
         drawStars()
+        drawEnemies()
     }
     
     /// Returns the topmost item, if there is any, at a given point in the view.

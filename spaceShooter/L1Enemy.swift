@@ -12,7 +12,9 @@ class L1Enemy: MovableObject{
     var curLoc: CGPoint
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.red
+    var enemyBulletTicker = 0
+    var col = UIColor.white
+    var stopMove = false
     required init(location: CGPoint, size: Int) {
         self.curLoc = location
         self.size = size
@@ -30,6 +32,12 @@ class L1Enemy: MovableObject{
     func updateLocation(newLoc: CGPoint) {
         //TODO
         //enemy should descend in a formation and descend based tick speed
+        if tick < 75 {
+            curLoc = CGPoint(x: self.curLoc.x,y: self.curLoc.y+2)
+        }else{
+            self.stopMove = true
+        }
+        self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     
     func contains(point: CGPoint) -> Bool {
@@ -37,7 +45,12 @@ class L1Enemy: MovableObject{
     }
     
     func draw() {
-        //TODO
+        col.setFill()
+        self.updateLocation(newLoc: self.curLoc)
+        let bezPath = UIBezierPath(rect: self.hitBound)
+        bezPath.fill()
+        enemyBulletTicker = enemyBulletTicker + 1
+        
     }
     
     

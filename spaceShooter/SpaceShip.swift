@@ -18,7 +18,7 @@ class SpaceShip: MovableObject{
         self.curLoc = location
         self.size = size
         let cgSize = CGFloat(self.size)
-        self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
+        self.hitBound = CGRect(x: location.x - (cgSize/2), y: location.y, width: cgSize, height: cgSize)
         
     }
     func getX() -> CGFloat{
@@ -38,11 +38,13 @@ class SpaceShip: MovableObject{
         if curLoc.x > 370{
             hardX = CGFloat(370-self.size)
         }
-        self.hitBound = CGRect(x: hardX, y: hardY, width: cgSize, height: cgSize)
+        self.hitBound = CGRect(x: hardX - (cgSize/2), y: hardY, width: cgSize, height: cgSize)
      
     }
     func contains(point: CGPoint) -> Bool{
-        return true
+        let bound = CGRect(x:hitBound.minX-10, y: hitBound.minY-10, width: hitBound.width+20, height: hitBound.height+20)
+        let bezPath = UIBezierPath(rect: bound)
+        return bezPath.contains(point)
     }
     func draw(){
         col.setFill()
