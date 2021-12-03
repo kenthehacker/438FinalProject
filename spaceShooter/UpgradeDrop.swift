@@ -20,6 +20,7 @@ class UpgradeDrop: MovableObject{
         case healthBoost
         case fasterFire
         case fasterSpeed
+        case superHealthBoost
     }
     var upgrade: upgradeType
     
