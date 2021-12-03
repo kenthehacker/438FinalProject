@@ -29,10 +29,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         gameClock?.add(to: .current, forMode: .common)
         
         let meap = CGPoint(x: 50, y: 700)
-        let spaceShit = SpaceShip(location: meap, size: 30)
+        let spaceShip = SpaceShip(location: meap, size: 30)
         
         //gameView.items.append(spaceShit)
-        gameView.mainCharacter = spaceShit
+        gameView.mainCharacter = spaceShip
         startLevel1()
         // Do any additional setup after loading the view.
     }
