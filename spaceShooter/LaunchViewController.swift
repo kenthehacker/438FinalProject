@@ -9,12 +9,18 @@ import UIKit
 
 class LaunchViewController: UIViewController {
 
+    @IBOutlet weak var play_button: UIButton!
+    @IBOutlet weak var leaderboard_button: UIButton!
+    @IBOutlet var gameViews: GameView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        play_button.tintColor = UIColor.white
+        leaderboard_button.tintColor = UIColor.white
+        
     }
-    
 
     /*
     // MARK: - Navigation

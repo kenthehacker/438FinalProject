@@ -13,6 +13,9 @@ class LeaderboardViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let textAtt = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAtt
+        self.navigationController?.navigationBar.tintColor = UIColor.white;
     }
     
 
