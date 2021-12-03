@@ -10,6 +10,8 @@ import UIKit
 final class GameView: UIView{
     var mainCharacter = SpaceShip(location: CGPoint(x: 4, y: 4), size: 0)
     var numEnemy = 0
+    var isAlive: [Bool] = []
+    
     var items: [MovableObject] = [] {
         didSet {
             setNeedsDisplay()
@@ -46,7 +48,9 @@ final class GameView: UIView{
     func drawEnemies() {
         var i = 0
         while i < enemies.count{
-            enemies[i].draw()
+            if isAlive[i] {
+                enemies[i].draw()
+            }
             i = i+1
         }
     }
@@ -72,6 +76,10 @@ final class GameView: UIView{
     /// - Returns: The topmost (last added) item, or `nil` if there is none.
     func itemAtLocation(_ location: CGPoint) -> MovableObject? {
         return items.last { $0.contains(point: location) }
+    }
+    
+    func enemyIsInFront(index: Int) {
+        
     }
 }
 

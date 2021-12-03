@@ -41,7 +41,22 @@ class L1Enemy: MovableObject{
     }
     
     func contains(point: CGPoint) -> Bool {
-        return true
+        let bound = CGRect(x:hitBound.minX, y: hitBound.minY, width: hitBound.width, height: hitBound.height)
+        let bezPath = UIBezierPath(rect: bound)
+        let center = bezPath.contains(point)
+        
+        let boundLeft = CGRect(x:hitBound.minX - 10, y: hitBound.minY, width: hitBound.width, height: hitBound.height)
+        let bezPathLeft = UIBezierPath(rect: boundLeft)
+        let leftCorner = bezPathLeft.contains(point)
+        
+        let boundRight = CGRect(x:hitBound.minX + 10, y: hitBound.minY, width: hitBound.width, height: hitBound.height)
+        let bezPathRight = UIBezierPath(rect: boundRight)
+        let rightCorner = bezPathRight.contains(point)
+        
+        if center || rightCorner || leftCorner {
+            return true
+        }
+        return false
     }
     
     func draw() {
@@ -52,8 +67,6 @@ class L1Enemy: MovableObject{
         enemyBulletTicker = enemyBulletTicker + 1
         
     }
-    
-    
     
     
 }
