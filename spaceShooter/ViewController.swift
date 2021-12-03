@@ -152,7 +152,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             let location = CGPoint(x: (Int)(gameView.enemies[shootingEnemy].getX()), y: (Int)(gameView.enemies[shootingEnemy].getY()) + 40)
             let enemy = EnemyBullet(location: location, size: 20)
-            gameView.items.append(enemy)
+            gameView.enemyMagazine.append(enemy)
         }
     }
     
@@ -188,6 +188,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             enemyNumber += 1
         }
         
+        for enemyBullet in gameView.enemyMagazine{
+            if enemyBullet.contains(point: gameView.mainCharacter.getPoint()){
+                var isAlive = gameView.mainCharacter.takeDamage(hp: enemyBullet.getDamage())
+                print("new health: "+String(gameView.mainCharacter.health))
+            }
+        }
     }
     
 

@@ -12,6 +12,11 @@ final class GameView: UIView{
     var numEnemy = 0
     var isAlive: [Bool] = []
     
+    var enemyMagazine: [EnemyBullet] = [] {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     var items: [MovableObject] = [] {
         didSet {
             setNeedsDisplay()
@@ -61,6 +66,16 @@ final class GameView: UIView{
             items[i].draw()
             if items[i].getY() > 750{
                 items.remove(at: i)
+                i = i - 1
+            }
+            
+            i = i+1
+        }
+        i = 0
+        while i < enemyMagazine.count{
+            enemyMagazine[i].draw()
+            if enemyMagazine[i].getY() > 750{
+                enemyMagazine.remove(at: i)
                 i = i - 1
             }
             

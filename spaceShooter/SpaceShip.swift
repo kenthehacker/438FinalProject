@@ -27,6 +27,9 @@ class SpaceShip: MovableObject{
     func getY() -> CGFloat{
         return self.curLoc.y
     }
+    func getPoint() -> CGPoint{
+        return self.curLoc
+    }
     
     func updateLocation(newLoc: CGPoint){
         self.curLoc = newLoc
