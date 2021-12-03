@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 class LeaderboardViewController: UIViewController {
 
@@ -19,12 +20,19 @@ class LeaderboardViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.white;
         
         data()
+        
+        let locale = Locale.current
+        print(locale.regionCode ?? "")
     }
     
     func data(){
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("test").setValue(1)
+        ref.child("test").child(Locale.current.regionCode ?? "").setValue(1) // value = score
+    }
+    
+    func fetchData() {
+        
     }
 
     /*
