@@ -23,6 +23,7 @@
 		362C4AB6274372820050A97C /* ShootingStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AB5274372820050A97C /* ShootingStar.swift */; };
 		365A430E2759C62300D0F5F6 /* UpgradeDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */; };
 		36BF899D27446D0B001047AE /* EnemyBullets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BF899C27446D0B001047AE /* EnemyBullets.swift */; };
+		7D3A17C32759D033006FA028 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */; };
 		7D7502532759CA74007EF51B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7502522759CA74007EF51B /* LaunchViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		362C4AB5274372820050A97C /* ShootingStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingStar.swift; sourceTree = "<group>"; };
 		365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeDrop.swift; sourceTree = "<group>"; };
 		36BF899C27446D0B001047AE /* EnemyBullets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBullets.swift; sourceTree = "<group>"; };
+		7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		7D7502522759CA74007EF51B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				362C4A79274337DB0050A97C /* SceneDelegate.swift */,
 				362C4A7B274337DB0050A97C /* ViewController.swift */,
 				362C4A7D274337DB0050A97C /* Main.storyboard */,
+				7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */,
 				7D7502522759CA74007EF51B /* LaunchViewController.swift */,
 				362C4A80274337DE0050A97C /* Assets.xcassets */,
 				362C4A82274337DE0050A97C /* LaunchScreen.storyboard */,
@@ -287,6 +290,7 @@
 			files = (
 				36BF899D27446D0B001047AE /* EnemyBullets.swift in Sources */,
 				362C4AB027435DB30050A97C /* Bullets.swift in Sources */,
+				7D3A17C32759D033006FA028 /* LeaderboardViewController.swift in Sources */,
 				362C4A7C274337DB0050A97C /* ViewController.swift in Sources */,
 				362C4AAE27435BD60050A97C /* MovableObject.swift in Sources */,
 				362C4AB42743724A0050A97C /* L1Enemy.swift in Sources */,

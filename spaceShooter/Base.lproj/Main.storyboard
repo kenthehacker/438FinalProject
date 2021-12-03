@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="947.69230769230762" y="61.137440758293835"/>
+            <point key="canvasLocation" x="1177" y="-229"/>
         </scene>
         <!--Launch View Controller-->
         <scene sceneID="0s7-t4-aW7">
@@ -86,6 +86,21 @@
             </objects>
             <point key="canvasLocation" x="243.07692307692307" y="60.426540284360186"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="nwj-Ii-6CD">
+            <objects>
+                <viewController id="4tT-dO-TWj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jp8-Ka-ZuR">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="e8s-sd-7c6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bj3-39-JKX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1177" y="454"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="i9h-Zv-HGf">
             <objects>
@@ -102,7 +117,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nyf-sm-ioh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-529" y="61"/>
+            <point key="canvasLocation" x="-834" y="61"/>
         </scene>
     </scenes>
     <resources>

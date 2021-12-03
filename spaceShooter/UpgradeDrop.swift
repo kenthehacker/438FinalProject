@@ -48,7 +48,7 @@ class UpgradeDrop: MovableObject{
     func contains(point: CGPoint) -> Bool {
         let tempBound = CGRect(x:hitBound.minX-10, y: hitBound.minY-10, width: hitBound.width+20, height: hitBound.height+20)
         let bezPath = UIBezierPath(rect: tempBound)
-        return bezPath.contains(<#T##point: CGPoint##CGPoint#>)
+        return bezPath.contains(point)
     }
     
     func draw() {
