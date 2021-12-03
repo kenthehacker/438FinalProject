@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LeaderboardViewController: UIViewController {
 
@@ -16,8 +17,15 @@ class LeaderboardViewController: UIViewController {
         let textAtt = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAtt
         self.navigationController?.navigationBar.tintColor = UIColor.white;
+        
+        data()
     }
     
+    func data(){
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("test").setValue(1)
+    }
 
     /*
     // MARK: - Navigation

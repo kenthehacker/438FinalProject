@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,11 @@
 		365A430E2759C62300D0F5F6 /* UpgradeDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */; };
 		36BF899D27446D0B001047AE /* EnemyBullets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BF899C27446D0B001047AE /* EnemyBullets.swift */; };
 		7D3A17C32759D033006FA028 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */; };
+		7D585FD82759E3AD0047E71E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D585FD72759E3AD0047E71E /* GoogleService-Info.plist */; };
+		7D585FDB2759E3E60047E71E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7D585FDA2759E3E60047E71E /* FirebaseAnalytics */; };
+		7D585FDD2759E3E60047E71E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7D585FDC2759E3E60047E71E /* FirebaseDatabase */; };
+		7D585FDF2759E3E60047E71E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7D585FDE2759E3E60047E71E /* FirebaseFirestore */; };
+		7D585FE12759E3E60047E71E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7D585FE02759E3E60047E71E /* FirebaseStorage */; };
 		7D7502532759CA74007EF51B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7502522759CA74007EF51B /* LaunchViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +73,7 @@
 		365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeDrop.swift; sourceTree = "<group>"; };
 		36BF899C27446D0B001047AE /* EnemyBullets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBullets.swift; sourceTree = "<group>"; };
 		7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		7D585FD72759E3AD0047E71E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7D7502522759CA74007EF51B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +82,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D585FDD2759E3E60047E71E /* FirebaseDatabase in Frameworks */,
+				7D585FE12759E3E60047E71E /* FirebaseStorage in Frameworks */,
+				7D585FDB2759E3E60047E71E /* FirebaseAnalytics in Frameworks */,
+				7D585FDF2759E3E60047E71E /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +142,7 @@
 				362C4AAB27433B660050A97C /* GameView.swift */,
 				362C4AAD27435BD60050A97C /* MovableObject.swift */,
 				362C4AAF27435DB30050A97C /* Bullets.swift */,
+				7D585FD72759E3AD0047E71E /* GoogleService-Info.plist */,
 				36BF899C27446D0B001047AE /* EnemyBullets.swift */,
 				362C4AB32743724A0050A97C /* L1Enemy.swift */,
 				362C4AB5274372820050A97C /* ShootingStar.swift */,
@@ -174,6 +185,12 @@
 			dependencies = (
 			);
 			name = spaceShooter;
+			packageProductDependencies = (
+				7D585FDA2759E3E60047E71E /* FirebaseAnalytics */,
+				7D585FDC2759E3E60047E71E /* FirebaseDatabase */,
+				7D585FDE2759E3E60047E71E /* FirebaseFirestore */,
+				7D585FE02759E3E60047E71E /* FirebaseStorage */,
+			);
 			productName = spaceShooter;
 			productReference = 362C4A74274337DB0050A97C /* spaceShooter.app */;
 			productType = "com.apple.product-type.application";
@@ -245,6 +262,9 @@
 				Base,
 			);
 			mainGroup = 362C4A6B274337DB0050A97C;
+			packageReferences = (
+				7D585FD92759E3E60047E71E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 362C4A75274337DB0050A97C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -262,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				362C4A84274337DE0050A97C /* LaunchScreen.storyboard in Resources */,
+				7D585FD82759E3AD0047E71E /* GoogleService-Info.plist in Resources */,
 				362C4A81274337DE0050A97C /* Assets.xcassets in Resources */,
 				362C4A7F274337DB0050A97C /* Main.storyboard in Resources */,
 			);
@@ -633,6 +654,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7D585FD92759E3E60047E71E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7D585FDA2759E3E60047E71E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D585FD92759E3E60047E71E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		7D585FDC2759E3E60047E71E /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D585FD92759E3E60047E71E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		7D585FDE2759E3E60047E71E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D585FD92759E3E60047E71E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		7D585FE02759E3E60047E71E /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D585FD92759E3E60047E71E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 362C4A6C274337DB0050A97C /* Project object */;
 }
