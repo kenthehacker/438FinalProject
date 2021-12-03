@@ -31,7 +31,9 @@ class Bullet: MovableObject{
         self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     func contains(point: CGPoint) -> Bool{
-        return true
+        let bound = CGRect(x:hitBound.minX-10, y: hitBound.minY-10, width: hitBound.width+20, height: hitBound.height+20)
+        let bezPath = UIBezierPath(rect: bound)
+        return bezPath.contains(point)
     }
     func draw(){
         col.setFill()

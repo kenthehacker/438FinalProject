@@ -27,6 +27,7 @@ class SpaceShip: MovableObject{
     func getY() -> CGFloat{
         return self.curLoc.y
     }
+    
     func updateLocation(newLoc: CGPoint){
         self.curLoc = newLoc
         let cgSize = CGFloat(size)
@@ -52,4 +53,20 @@ class SpaceShip: MovableObject{
         bezPath.fill()
     }
     
+    func takeDamage(hp: Int) -> Bool{
+        self.health = self.health-hp
+        if self.health < 0{
+            return false
+        }
+        return true
+        //if it returns false then we have to restart the game
+    }
+    func healthBoost(n: Int){                   //if we got the superhealth boost we'll just increment health by 100
+        self.health = self.health + 10
+        if self.health > 100{
+            self.health = 100
+        }
+    }
+    
 }
+
