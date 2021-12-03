@@ -84,14 +84,24 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func addBullet(){
-        if bulletTimer > 25 && isPlaying{
-            bulletTimer = 0
-            let tempLocation = CGPoint(x: gameView.mainCharacter.getX() - 10, y: 690)
-            let tempBullet = Bullet(location: tempLocation, size: 20)
-            if fastMode{
-                tempBullet.newSpeed(n: 20)
+        
+        if fastMode{
+            if bulletTimer > 10 && isPlaying{
+                bulletTimer = 0
+                let tempLocation = CGPoint(x: gameView.mainCharacter.getX() - 10, y: 690)
+                let tempBullet = Bullet(location: tempLocation, size: 20)
+                if fastMode{
+                    tempBullet.newSpeed(n: 20)
+                }
+                gameView.items.append(tempBullet)
             }
-            gameView.items.append(tempBullet)
+        }else{
+            if bulletTimer > 25 && isPlaying{
+                bulletTimer = 0
+                let tempLocation = CGPoint(x: gameView.mainCharacter.getX() - 10, y: 690)
+                let tempBullet = Bullet(location: tempLocation, size: 20)
+                gameView.items.append(tempBullet)
+            }
         }
     }
     
@@ -182,7 +192,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             for bullet in gameView.items{
                 if enemy.contains(point: CGPoint(x: bullet.getX() + 10, y: bullet.getY())) && gameView.isAlive[enemyNumber]{
                     
-                    if Int.random(in: 1..<100) >= 85{
+                    if Int.random(in: 1..<100) >= 92{
                         gameView.upgrades.append(UpgradeDrop(location: CGPoint(x: bullet.getX() + 10, y: bullet.getY()), size: 10))
                     }
                     
@@ -203,19 +213,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if !isAlive{
                     //TODO: terminate the game
                 }
-                print("new health: "+String(gameView.mainCharacter.health))
+                
             }
         }
         for i in gameView.upgrades{
             if i.contains(point: gameView.mainCharacter.getPoint()){
                 if i.upgrade == .healthBoost{
+                    print("new health"+String(gameView.mainCharacter.health))
                     gameView.mainCharacter.healthBoost(n: 10)
                 }
                 else if i.upgrade == .fasterFire{
                     fastMode = true
+                    print("faster fire")
                 }
                 else{
                     gameView.mainCharacter.healthBoost(n: 100)
+                    print("ultra health boost "+String(gameView.mainCharacter.health))
                 }
             }
         }
