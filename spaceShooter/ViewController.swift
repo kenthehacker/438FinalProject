@@ -192,7 +192,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             for bullet in gameView.items{
                 if enemy.contains(point: CGPoint(x: bullet.getX() + 10, y: bullet.getY())) && gameView.isAlive[enemyNumber]{
                     
-                    if Int.random(in: 1..<100) >= 92{
+                    if Int.random(in: 1..<100) >= 90{
                         gameView.upgrades.append(UpgradeDrop(location: CGPoint(x: bullet.getX() + 10, y: bullet.getY()), size: 10))
                     }
                     
