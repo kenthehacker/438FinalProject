@@ -21,6 +21,7 @@
 		362C4AB027435DB30050A97C /* Bullets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AAF27435DB30050A97C /* Bullets.swift */; };
 		362C4AB42743724A0050A97C /* L1Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AB32743724A0050A97C /* L1Enemy.swift */; };
 		362C4AB6274372820050A97C /* ShootingStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AB5274372820050A97C /* ShootingStar.swift */; };
+		365A430E2759C62300D0F5F6 /* UpgradeDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */; };
 		36BF899D27446D0B001047AE /* EnemyBullets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BF899C27446D0B001047AE /* EnemyBullets.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		362C4AAF27435DB30050A97C /* Bullets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullets.swift; sourceTree = "<group>"; };
 		362C4AB32743724A0050A97C /* L1Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L1Enemy.swift; sourceTree = "<group>"; };
 		362C4AB5274372820050A97C /* ShootingStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingStar.swift; sourceTree = "<group>"; };
+		365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeDrop.swift; sourceTree = "<group>"; };
 		36BF899C27446D0B001047AE /* EnemyBullets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBullets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				36BF899C27446D0B001047AE /* EnemyBullets.swift */,
 				362C4AB32743724A0050A97C /* L1Enemy.swift */,
 				362C4AB5274372820050A97C /* ShootingStar.swift */,
+				365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */,
 			);
 			path = spaceShooter;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				362C4AAE27435BD60050A97C /* MovableObject.swift in Sources */,
 				362C4AB42743724A0050A97C /* L1Enemy.swift in Sources */,
 				362C4A78274337DB0050A97C /* AppDelegate.swift in Sources */,
+				365A430E2759C62300D0F5F6 /* UpgradeDrop.swift in Sources */,
 				362C4AA8274338380050A97C /* SpaceShip.swift in Sources */,
 				362C4A7A274337DB0050A97C /* SceneDelegate.swift in Sources */,
 				362C4AAC27433B660050A97C /* GameView.swift in Sources */,
