@@ -14,11 +14,21 @@ class UpgradeDrop: MovableObject{
     var hitBound: CGRect
     var col = UIColor.white
     let speed = CGFloat(5)
+    
+    
+    enum upgradeType: CaseIterable {
+        case healthBoost
+        case fasterFire
+        case fasterSpeed
+    }
+    var upgrade: upgradeType
+    
     required init(location: CGPoint, size: Int) {
         self.size = size
         self.curLoc = location
         let cgSize = CGFloat(self.size)
         self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
+        self.upgrade = upgradeType.allCases.randomElement() ?? upgradeType.fasterFire   //picks a random enum case
     }
     
     func getX() -> CGFloat {
