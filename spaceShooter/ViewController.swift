@@ -19,6 +19,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var enemyBulletTimer = 0
     var currentLocation:CGPoint?
     var score = 0
+    var fastMode = false
     @IBOutlet weak var gameView: GameView!
     //var gameView: GameView!
     
@@ -87,6 +88,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             bulletTimer = 0
             let tempLocation = CGPoint(x: gameView.mainCharacter.getX() - 10, y: 690)
             let tempBullet = Bullet(location: tempLocation, size: 20)
+            if fastMode{
+                tempBullet.newSpeed(n: 20)
+            }
             gameView.items.append(tempBullet)
         }
     }
@@ -177,6 +181,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             var bulletNumber = 0
             for bullet in gameView.items{
                 if enemy.contains(point: CGPoint(x: bullet.getX() + 10, y: bullet.getY())) && gameView.isAlive[enemyNumber]{
+                    
+                    if Int.random(in: 1..<100) >= 85{
+                        gameView.upgrades.append(UpgradeDrop(location: CGPoint(x: bullet.getX() + 10, y: bullet.getY()), size: 10))
+                    }
+                    
                     gameView.isAlive[enemyNumber] = false
                     gameView.items.remove(at: bulletNumber)
                     score += 10
@@ -190,8 +199,24 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         for enemyBullet in gameView.enemyMagazine{
             if enemyBullet.contains(point: gameView.mainCharacter.getPoint()){
-                var isAlive = gameView.mainCharacter.takeDamage(hp: enemyBullet.getDamage())
+                let isAlive = gameView.mainCharacter.takeDamage(hp: enemyBullet.getDamage())
+                if !isAlive{
+                    //TODO: terminate the game
+                }
                 print("new health: "+String(gameView.mainCharacter.health))
+            }
+        }
+        for i in gameView.upgrades{
+            if i.contains(point: gameView.mainCharacter.getPoint()){
+                if i.upgrade == .healthBoost{
+                    gameView.mainCharacter.healthBoost(n: 10)
+                }
+                else if i.upgrade == .fasterFire{
+                    fastMode = true
+                }
+                else{
+                    gameView.mainCharacter.healthBoost(n: 100)
+                }
             }
         }
     }

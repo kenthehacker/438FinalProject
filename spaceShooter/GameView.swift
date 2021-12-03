@@ -12,6 +12,11 @@ final class GameView: UIView{
     var numEnemy = 0
     var isAlive: [Bool] = []
     
+    var upgrades: [UpgradeDrop] = []{
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     var enemyMagazine: [EnemyBullet] = [] {
         didSet {
             setNeedsDisplay()
@@ -79,6 +84,15 @@ final class GameView: UIView{
                 i = i - 1
             }
             
+            i = i+1
+        }
+        i = 0
+        while i < upgrades.count{
+            upgrades[i].draw()
+            if upgrades[i].getY() > 750{
+                upgrades.remove(at: i)
+                i = i - 1
+            }
             i = i+1
         }
         self.mainCharacter.draw()

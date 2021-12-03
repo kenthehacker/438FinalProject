@@ -12,14 +12,13 @@ class UpgradeDrop: MovableObject{
     var curLoc: CGPoint
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.white
+    var col = UIColor.red
     let speed = CGFloat(5)
     
     
     enum upgradeType: CaseIterable {
         case healthBoost
         case fasterFire
-        case fasterSpeed
         case superHealthBoost
     }
     var upgrade: upgradeType
@@ -53,6 +52,7 @@ class UpgradeDrop: MovableObject{
     
     func draw() {
         col.setFill()
+        self.updateLocation(newLoc: curLoc)
         let bezPath = UIBezierPath(rect: self.hitBound)
         bezPath.fill()
     }
