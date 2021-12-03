@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var bulletTimer = 0
     var enemyBulletTimer = 0
     var currentLocation:CGPoint?
+    var score = 0
     @IBOutlet weak var gameView: GameView!
     //var gameView: GameView!
     
@@ -25,12 +26,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         //gameView = GameView(frame: canvas.frame)
         self.view.backgroundColor = UIColor.black
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        
+        let textAtt = [NSAttributedString.Key.foregroundColor:UIColor.red, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24)]
+        navigationController?.navigationBar.titleTextAttributes = textAtt
+        self.navigationItem.title = "\(score)"
+        
         gameClock = CADisplayLink(target: self, selector: #selector(update))
         gameClock?.add(to: .current, forMode: .common)
         
         let meap = CGPoint(x: 50, y: 700)
         let spaceShip = SpaceShip(location: meap, size: 30)
-        
+
         //gameView.items.append(spaceShit)
         gameView.mainCharacter = spaceShip
         startLevel1()
@@ -172,6 +179,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if enemy.contains(point: CGPoint(x: bullet.getX() + 10, y: bullet.getY())) && gameView.isAlive[enemyNumber]{
                     gameView.isAlive[enemyNumber] = false
                     gameView.items.remove(at: bulletNumber)
+                    score += 10
+                    self.navigationItem.title = "\(score)"
                     return
                 }
                 bulletNumber += 1

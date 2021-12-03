@@ -22,6 +22,7 @@
 		362C4AB42743724A0050A97C /* L1Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AB32743724A0050A97C /* L1Enemy.swift */; };
 		362C4AB6274372820050A97C /* ShootingStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AB5274372820050A97C /* ShootingStar.swift */; };
 		36BF899D27446D0B001047AE /* EnemyBullets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BF899C27446D0B001047AE /* EnemyBullets.swift */; };
+		7D7502532759CA74007EF51B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7502522759CA74007EF51B /* LaunchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		362C4AB32743724A0050A97C /* L1Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L1Enemy.swift; sourceTree = "<group>"; };
 		362C4AB5274372820050A97C /* ShootingStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingStar.swift; sourceTree = "<group>"; };
 		36BF899C27446D0B001047AE /* EnemyBullets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBullets.swift; sourceTree = "<group>"; };
+		7D7502522759CA74007EF51B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				362C4A79274337DB0050A97C /* SceneDelegate.swift */,
 				362C4A7B274337DB0050A97C /* ViewController.swift */,
 				362C4A7D274337DB0050A97C /* Main.storyboard */,
+				7D7502522759CA74007EF51B /* LaunchViewController.swift */,
 				362C4A80274337DE0050A97C /* Assets.xcassets */,
 				362C4A82274337DE0050A97C /* LaunchScreen.storyboard */,
 				362C4A85274337DE0050A97C /* Info.plist */,
@@ -287,6 +290,7 @@
 				362C4A78274337DB0050A97C /* AppDelegate.swift in Sources */,
 				362C4AA8274338380050A97C /* SpaceShip.swift in Sources */,
 				362C4A7A274337DB0050A97C /* SceneDelegate.swift in Sources */,
+				7D7502532759CA74007EF51B /* LaunchViewController.swift in Sources */,
 				362C4AAC27433B660050A97C /* GameView.swift in Sources */,
 				362C4AB6274372820050A97C /* ShootingStar.swift in Sources */,
 			);
