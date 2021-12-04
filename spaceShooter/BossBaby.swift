@@ -9,31 +9,58 @@ import Foundation
 import UIKit
 
 class BossBaby:MovableObject{
-    var isAlive = true
+    func isAlive() -> Bool {
+        return self.alive
+    }
+    var health = 100
+    var alive = true
+    var curLoc: CGPoint
+    var size: Int
+    var hitBound: CGRect
+    var col = UIColor.yellow
+    var speed = CGFloat(10)
+    var stopMove = false
     required init(location: CGPoint, size: Int) {
-        <#code#>
+        self.curLoc = location
+        self.size = size
+        let cgSize = CGFloat(self.size)
+        self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
     }
     
     func getX() -> CGFloat {
-        <#code#>
+        return self.curLoc.x
     }
     
     func getY() -> CGFloat {
-        <#code#>
+        return self.curLoc.y
     }
     
     func updateLocation(newLoc: CGPoint) {
-        <#code#>
+        
+        //TODO: just like level1 enemy have it come down after a certain number of ticks dont let it take hit damage until it has finished descending
+        if tick < 75 {  //when the boss level happens you should reset the number of ticks 
+            curLoc = CGPoint(x: self.curLoc.x,y: self.curLoc.y+2)
+        }else{
+            self.stopMove = true
+        }
+        self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     
-    func contains(point: CGPoint) -> Bool {
-        <#code#>
+    func contains(point: CGPoint) -> Bool{
+        let bound = CGRect(x:hitBound.minX-10, y: hitBound.minY-10, width: hitBound.width+20, height: hitBound.height+20)
+        let bezPath = UIBezierPath(rect: bound)
+        return bezPath.contains(point)
     }
-    
-    func draw() {
-        <#code#>
+    func draw(){
+        col.setFill()
+        self.updateLocation(newLoc: self.curLoc)
+        let bezPath = UIBezierPath(rect: self.hitBound)
+        bezPath.fill()
+        
     }
-    
+    func takeDamage(n: Int){
+        self.health = self.health - n
+    }
     
 }
 

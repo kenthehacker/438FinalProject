@@ -8,7 +8,12 @@
 import Foundation
 import UIKit
 class L1Enemy: MovableObject{
+    func isAlive() -> Bool {
+        return self.alive
+    }
+    
     var health = 100
+    var alive = true
     var curLoc: CGPoint
     var size: Int
     var hitBound: CGRect
