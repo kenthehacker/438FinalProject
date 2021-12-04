@@ -15,4 +15,5 @@ protocol MovableObject {
     func updateLocation(newLoc: CGPoint)
     func contains(point: CGPoint) -> Bool
     func draw()
+    func isAlive() -> Bool
 }

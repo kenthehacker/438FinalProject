@@ -14,7 +14,7 @@ var tick = 0
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var currentLevel = 1
     let maxLevel = 3
-    var isAlive = true
+    var playerIsAlive = true
     var beganTouchyTouchy = false
     var isPlaying = false
     var bulletTimer = 0
@@ -43,7 +43,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
 
         gameView.mainCharacter = spaceShip
-        startLevel1()
+        createEnemiesL1()
+        //originally said start level1()
         // Do any additional setup after loading the view.
     }
     
@@ -51,43 +52,65 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         //check if the main character is dead
         
         if gameView.mainCharacter.health<0{
-            isAlive = false
+            playerIsAlive = false
         }
-        if !isAlive && currentLevel != 666{
+        if !playerIsAlive && currentLevel != 666{
             currentLevel = 666      //level 666 is our leader board page
             gameView.clearScreen()
             //we'll need to clear everything on the gameview!!
         }
-        else if !isAlive && currentLevel == 666{
+        else if !playerIsAlive && currentLevel == 666{
             //TODO: put on the leaderboard screen
-            
         }
         else{
-            tick += 1
-            bulletTimer += 1
-            enemyBulletTimer += 1
-            addBullet()
-            shootBullets()
-            didGetHit()
-            
-            //check if all of the enemy objects are gone
-            var counter = 0
-            for i in gameView.isAlive{
-                if i == true{
-                    counter += 1
-                }
+            if currentLevel == 1{
+                level1()
+            }
+            else if currentLevel == 2{
+                level2()
+                print("level 2")
             }
             
-            if counter == 0{
-                currentLevel = currentLevel+1
-            }
-            
-            
-            gameView.setNeedsDisplay()
             
         }
+    }
+    
+    //all of the levels ->
+    
+    func level1(){
+        tick += 1
+        bulletTimer += 1
+        enemyBulletTimer += 1
+        addBullet()
+        shootBullets()
+        didGetHit()
+        //check if all of the enemy objects are gone
+        var counter = 0
+        for i in gameView.isAlive{
+            if i == true{
+                counter += 1
+            }
+        }
+        
+        if counter == 0{
+            currentLevel = currentLevel+1
+        }
+        
+        gameView.setNeedsDisplay()
         
     }
+    func level2(){
+        
+    }
+    func level3(){
+        
+    }
+    func level666(){
+        
+    }
+    
+    //<- all of the levels
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touchPoint = (touches.first)!.location(in: gameView) as CGPoint
@@ -134,12 +157,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
+    /*
     func startLevel1() {
         createEnemiesLevelOne()
     }
+     */
     
-    func createEnemiesLevelOne() {
+    func createEnemiesL1() {
         let x_loc = [55, 110, 165, 225, 280]
         let y_loc = [-20, -60, -100]
         for j in 0..<3 {
@@ -154,6 +178,30 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let isAlive: [Bool] = [Bool](repeating: true, count: gameView.numEnemy)
         gameView.isAlive = isAlive
     }
+    
+    func createEnemiesL2(){
+        var numDiagGenerated = 0
+        createEnemiesL1()
+        var counter = 0
+        for i in gameView.isAlive{
+            if i == true{
+                counter += 1
+            }
+        }
+        if counter == 0{
+            numDiagGenerated = numDiagGenerated + 1
+            let tempDiag = DiagEnemy(location: CGPoint(x: Int.random(in: 350..<700), y: 0), size: 20)
+            gameView.scaledEnemies.append(tempDiag)
+        }
+        //if all of the enemies are dead drop in the swirly enemies
+        
+        //during and after the l1 enemies, drop in a diag enemy
+        
+        
+    }
+    
+    
+    
     
     func shootBullets() {
         if enemyBulletTimer > 40{

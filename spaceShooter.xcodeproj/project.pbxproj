@@ -21,6 +21,11 @@
 		362C4AB027435DB30050A97C /* Bullets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AAF27435DB30050A97C /* Bullets.swift */; };
 		362C4AB42743724A0050A97C /* L1Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AB32743724A0050A97C /* L1Enemy.swift */; };
 		362C4AB6274372820050A97C /* ShootingStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362C4AB5274372820050A97C /* ShootingStar.swift */; };
+		36483641275C10C80073F27E /* DiagEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36483640275C10C80073F27E /* DiagEnemy.swift */; };
+		36483643275C10F60073F27E /* SpinningEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36483642275C10F60073F27E /* SpinningEnemy.swift */; };
+		36483645275C11450073F27E /* ZigZagEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36483644275C11450073F27E /* ZigZagEnemy.swift */; };
+		36483647275C127E0073F27E /* ShurikenBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36483646275C127E0073F27E /* ShurikenBullet.swift */; };
+		36483649275C15F80073F27E /* BossBaby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36483648275C15F80073F27E /* BossBaby.swift */; };
 		365A430E2759C62300D0F5F6 /* UpgradeDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */; };
 		36BF899D27446D0B001047AE /* EnemyBullets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BF899C27446D0B001047AE /* EnemyBullets.swift */; };
 		7D3A17C32759D033006FA028 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */; };
@@ -70,6 +75,11 @@
 		362C4AAF27435DB30050A97C /* Bullets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullets.swift; sourceTree = "<group>"; };
 		362C4AB32743724A0050A97C /* L1Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L1Enemy.swift; sourceTree = "<group>"; };
 		362C4AB5274372820050A97C /* ShootingStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingStar.swift; sourceTree = "<group>"; };
+		36483640275C10C80073F27E /* DiagEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagEnemy.swift; sourceTree = "<group>"; };
+		36483642275C10F60073F27E /* SpinningEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningEnemy.swift; sourceTree = "<group>"; };
+		36483644275C11450073F27E /* ZigZagEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZigZagEnemy.swift; sourceTree = "<group>"; };
+		36483646275C127E0073F27E /* ShurikenBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShurikenBullet.swift; sourceTree = "<group>"; };
+		36483648275C15F80073F27E /* BossBaby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossBaby.swift; sourceTree = "<group>"; };
 		365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeDrop.swift; sourceTree = "<group>"; };
 		36BF899C27446D0B001047AE /* EnemyBullets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBullets.swift; sourceTree = "<group>"; };
 		7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +157,11 @@
 				362C4AB32743724A0050A97C /* L1Enemy.swift */,
 				362C4AB5274372820050A97C /* ShootingStar.swift */,
 				365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */,
+				36483640275C10C80073F27E /* DiagEnemy.swift */,
+				36483642275C10F60073F27E /* SpinningEnemy.swift */,
+				36483644275C11450073F27E /* ZigZagEnemy.swift */,
+				36483646275C127E0073F27E /* ShurikenBullet.swift */,
+				36483648275C15F80073F27E /* BossBaby.swift */,
 			);
 			path = spaceShooter;
 			sourceTree = "<group>";
@@ -312,13 +327,18 @@
 				36BF899D27446D0B001047AE /* EnemyBullets.swift in Sources */,
 				362C4AB027435DB30050A97C /* Bullets.swift in Sources */,
 				7D3A17C32759D033006FA028 /* LeaderboardViewController.swift in Sources */,
+				36483641275C10C80073F27E /* DiagEnemy.swift in Sources */,
 				362C4A7C274337DB0050A97C /* ViewController.swift in Sources */,
 				362C4AAE27435BD60050A97C /* MovableObject.swift in Sources */,
+				36483645275C11450073F27E /* ZigZagEnemy.swift in Sources */,
 				362C4AB42743724A0050A97C /* L1Enemy.swift in Sources */,
 				362C4A78274337DB0050A97C /* AppDelegate.swift in Sources */,
+				36483647275C127E0073F27E /* ShurikenBullet.swift in Sources */,
+				36483649275C15F80073F27E /* BossBaby.swift in Sources */,
 				365A430E2759C62300D0F5F6 /* UpgradeDrop.swift in Sources */,
 				362C4AA8274338380050A97C /* SpaceShip.swift in Sources */,
 				362C4A7A274337DB0050A97C /* SceneDelegate.swift in Sources */,
+				36483643275C10F60073F27E /* SpinningEnemy.swift in Sources */,
 				7D7502532759CA74007EF51B /* LaunchViewController.swift in Sources */,
 				362C4AAC27433B660050A97C /* GameView.swift in Sources */,
 				362C4AB6274372820050A97C /* ShootingStar.swift in Sources */,

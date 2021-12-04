@@ -32,11 +32,23 @@ final class GameView: UIView{
             setNeedsDisplay()
         }
     }
+    
+    
+    
+    
     var enemies: [MovableObject] = [] {
         didSet {
             setNeedsDisplay()
         }
     }
+    var scaledEnemies: [MovableObject] = [] {           //accomidates all of the different enemies
+        didSet{
+            setNeedsDisplay()
+        }
+    }
+    
+    
+    
     func drawSpace(){
         //self.mainCharacter.draw()
     }
@@ -63,6 +75,18 @@ final class GameView: UIView{
             }
             i = i+1
         }
+        
+        //all of the non-level 1 enemies can be drawn here -> 
+        i = 0
+        while i < scaledEnemies.count{
+            scaledEnemies[i].draw()
+            if !scaledEnemies[i].isAlive(){
+                scaledEnemies.remove(at: i)
+                i = i - 1
+            }
+            i = i + 1
+        }
+        
     }
     
     override func draw(_ rect: CGRect) {
