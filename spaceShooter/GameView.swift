@@ -97,6 +97,7 @@ final class GameView: UIView{
         }
         self.mainCharacter.draw()
         drawStars()
+        overlaySpaceShip()
         drawEnemies()
     }
     
@@ -110,5 +111,18 @@ final class GameView: UIView{
     func enemyIsInFront(index: Int) {
         
     }
+    
+    func overlaySpaceShip() {
+        if let image = UIImage(named: "SpaceShipGraphic") {
+            let imageView = UIImageView(image: image)
+            imageView.frame = self.mainCharacter.hitBound
+            imageView.tag = 999
+            if let viewWithTag = self.viewWithTag(999) {
+                viewWithTag.removeFromSuperview()
+            }
+            self.addSubview(imageView)
+        }
+    }
+    
 }
 
