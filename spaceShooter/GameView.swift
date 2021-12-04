@@ -123,6 +123,17 @@ final class GameView: UIView{
             self.addSubview(imageView)
         }
     }
-    
+    func clearScreen(){
+        upgrades = []
+        enemyMagazine = []
+        items = []
+        stars = []
+        enemies = []
+        for v in self.subviews{
+            v.removeFromSuperview()
+            //removes all of the subviews
+        }
+        setNeedsDisplay()
+    }
 }
 

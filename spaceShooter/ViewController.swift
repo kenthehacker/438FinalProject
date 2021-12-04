@@ -13,6 +13,8 @@ var screenHeight = 700
 var tick = 0
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var currentLevel = 1
+    let maxLevel = 3
+    var isAlive = true
     var beganTouchyTouchy = false
     var isPlaying = false
     var bulletTimer = 0
@@ -39,23 +41,47 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let meap = CGPoint(x: 50, y: 700)
         let spaceShip = SpaceShip(location: meap, size: 30)
 
-        //gameView.items.append(spaceShit)
+
         gameView.mainCharacter = spaceShip
         startLevel1()
         // Do any additional setup after loading the view.
     }
     
     @objc func update(){
-        //print("tick \(tick)")
-        tick += 1
-        bulletTimer += 1
-        enemyBulletTimer += 1
+        //check if the main character is dead
         
-        addBullet()
-        shootBulletsLevelOne()
-        didGetHit()
+        if gameView.mainCharacter.health<0{
+            isAlive = false
+        }
+        if !isAlive && currentLevel != 666{
+            currentLevel = 666      //level 666 is our leader board page
+            gameView.clearScreen()
+            //we'll need to clear everything on the gameview!!
+        }
+        else if !isAlive && currentLevel == 666{
+            //TODO: put on the leaderboard screen
+            
+        }
+        else{
+            tick += 1
+            bulletTimer += 1
+            enemyBulletTimer += 1
+            addBullet()
+            shootBullets()
+            didGetHit()
+            
+            //check if all of the enemy objects are gone
+            print("gameview enemies count: "+String(gameView.enemies.count))
+            if gameView.enemies.count == 0{
+                currentLevel = currentLevel+1
+                print("leveled up "+String(currentLevel))
+            }
+            
+            
+            gameView.setNeedsDisplay()
+            
+        }
         
-        gameView.setNeedsDisplay()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -84,7 +110,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func addBullet(){
-        
         if fastMode{
             if bulletTimer > 10 && isPlaying{
                 bulletTimer = 0
@@ -125,7 +150,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.isAlive = isAlive
     }
     
-    func shootBulletsLevelOne() {
+    func shootBullets() {
         if enemyBulletTimer > 40{
             enemyBulletTimer = 0
         }
@@ -210,10 +235,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         for enemyBullet in gameView.enemyMagazine{
             if enemyBullet.contains(point: gameView.mainCharacter.getPoint()){
                 let isAlive = gameView.mainCharacter.takeDamage(hp: enemyBullet.getDamage())
-                if !isAlive{
-                    //TODO: terminate the game
-                }
-                
+                print("damage: "+String(gameView.mainCharacter.health))
             }
         }
         for i in gameView.upgrades{
