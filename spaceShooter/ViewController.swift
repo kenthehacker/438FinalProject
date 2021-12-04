@@ -71,10 +71,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             didGetHit()
             
             //check if all of the enemy objects are gone
-            print("gameview enemies count: "+String(gameView.enemies.count))
-            if gameView.enemies.count == 0{
+            var counter = 0
+            for i in gameView.isAlive{
+                if i == true{
+                    counter += 1
+                }
+            }
+            
+            if counter == 0{
                 currentLevel = currentLevel+1
-                print("leveled up "+String(currentLevel))
             }
             
             
@@ -235,22 +240,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         for enemyBullet in gameView.enemyMagazine{
             if enemyBullet.contains(point: gameView.mainCharacter.getPoint()){
                 let isAlive = gameView.mainCharacter.takeDamage(hp: enemyBullet.getDamage())
-                print("damage: "+String(gameView.mainCharacter.health))
+                
             }
         }
         for i in gameView.upgrades{
             if i.contains(point: gameView.mainCharacter.getPoint()){
                 if i.upgrade == .healthBoost{
-                    print("new health"+String(gameView.mainCharacter.health))
                     gameView.mainCharacter.healthBoost(n: 10)
                 }
                 else if i.upgrade == .fasterFire{
                     fastMode = true
-                    print("faster fire")
                 }
                 else{
                     gameView.mainCharacter.healthBoost(n: 100)
-                    print("ultra health boost "+String(gameView.mainCharacter.health))
                 }
             }
         }
