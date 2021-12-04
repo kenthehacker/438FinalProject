@@ -26,6 +26,7 @@
 		36483645275C11450073F27E /* ZigZagEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36483644275C11450073F27E /* ZigZagEnemy.swift */; };
 		36483647275C127E0073F27E /* ShurikenBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36483646275C127E0073F27E /* ShurikenBullet.swift */; };
 		36483649275C15F80073F27E /* BossBaby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36483648275C15F80073F27E /* BossBaby.swift */; };
+		3648364B275C25A50073F27E /* FuckHeadsReadME.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3648364A275C25A50073F27E /* FuckHeadsReadME.rtf */; };
 		365A430E2759C62300D0F5F6 /* UpgradeDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */; };
 		36BF899D27446D0B001047AE /* EnemyBullets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BF899C27446D0B001047AE /* EnemyBullets.swift */; };
 		7D3A17C32759D033006FA028 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */; };
@@ -80,6 +81,7 @@
 		36483644275C11450073F27E /* ZigZagEnemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZigZagEnemy.swift; sourceTree = "<group>"; };
 		36483646275C127E0073F27E /* ShurikenBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShurikenBullet.swift; sourceTree = "<group>"; };
 		36483648275C15F80073F27E /* BossBaby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossBaby.swift; sourceTree = "<group>"; };
+		3648364A275C25A50073F27E /* FuckHeadsReadME.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = FuckHeadsReadME.rtf; sourceTree = "<group>"; };
 		365A430D2759C62300D0F5F6 /* UpgradeDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeDrop.swift; sourceTree = "<group>"; };
 		36BF899C27446D0B001047AE /* EnemyBullets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBullets.swift; sourceTree = "<group>"; };
 		7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				36483644275C11450073F27E /* ZigZagEnemy.swift */,
 				36483646275C127E0073F27E /* ShurikenBullet.swift */,
 				36483648275C15F80073F27E /* BossBaby.swift */,
+				3648364A275C25A50073F27E /* FuckHeadsReadME.rtf */,
 			);
 			path = spaceShooter;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			files = (
 				362C4A84274337DE0050A97C /* LaunchScreen.storyboard in Resources */,
 				7D585FD82759E3AD0047E71E /* GoogleService-Info.plist in Resources */,
+				3648364B275C25A50073F27E /* FuckHeadsReadME.rtf in Resources */,
 				362C4A81274337DE0050A97C /* Assets.xcassets in Resources */,
 				362C4A7F274337DB0050A97C /* Main.storyboard in Resources */,
 			);

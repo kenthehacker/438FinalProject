@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class Bullet: MovableObject{
+    
     var curLoc: CGPoint
     var size: Int
     var hitBound: CGRect
@@ -45,6 +46,10 @@ class Bullet: MovableObject{
         bezPath.fill()
         
     }
+    func isAlive() -> Bool {
+        return true
+    }
+    
 }
 
 
