@@ -12,9 +12,9 @@ class SpaceShip: MovableObject{
     var health: Int
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.white
+    var col = UIColor.clear
     required init(location: CGPoint, size:Int){
-        self.health = 100
+        self.health = 200
         self.curLoc = location
         self.size = size
         let cgSize = CGFloat(self.size)
@@ -30,7 +30,9 @@ class SpaceShip: MovableObject{
     func getPoint() -> CGPoint{
         return self.curLoc
     }
-    
+    func isAlive() -> Bool {
+        return true
+    }
     func updateLocation(newLoc: CGPoint){
         self.curLoc = newLoc
         let cgSize = CGFloat(size)

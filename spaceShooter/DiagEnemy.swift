@@ -10,7 +10,7 @@ import UIKit
 class DiagEnemy:MovableObject{
     
     var curLoc: CGPoint
-    var health: Int
+    var health: Int = 100
     var size: Int
     var hitBound: CGRect
     var col = UIColor.blue
@@ -19,6 +19,7 @@ class DiagEnemy:MovableObject{
     required init(location: CGPoint, size: Int) {
         self.curLoc = location
         self.size = size
+        self.hitBound = CGRect(x: location.x, y: location.y, width: CGFloat(size), height: CGFloat(size))
     }
     func getX() -> CGFloat{
         return self.curLoc.x

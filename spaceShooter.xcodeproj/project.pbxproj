@@ -36,6 +36,7 @@
 		7D585FDF2759E3E60047E71E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7D585FDE2759E3E60047E71E /* FirebaseFirestore */; };
 		7D585FE12759E3E60047E71E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7D585FE02759E3E60047E71E /* FirebaseStorage */; };
 		7D7502532759CA74007EF51B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7502522759CA74007EF51B /* LaunchViewController.swift */; };
+		7DF5F1CA275C61D900755B20 /* shooting_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7DF5F1C9275C61D900755B20 /* shooting_sound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		7D585FD72759E3AD0047E71E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7D7502522759CA74007EF51B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		7DF5F1C9275C61D900755B20 /* shooting_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shooting_sound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				362C4A77274337DB0050A97C /* AppDelegate.swift */,
 				362C4A79274337DB0050A97C /* SceneDelegate.swift */,
 				362C4A7B274337DB0050A97C /* ViewController.swift */,
+				7DF5F1C9275C61D900755B20 /* shooting_sound.wav */,
 				362C4A7D274337DB0050A97C /* Main.storyboard */,
 				7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */,
 				7D7502522759CA74007EF51B /* LaunchViewController.swift */,
@@ -300,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				362C4A84274337DE0050A97C /* LaunchScreen.storyboard in Resources */,
+				7DF5F1CA275C61D900755B20 /* shooting_sound.wav in Resources */,
 				7D585FD82759E3AD0047E71E /* GoogleService-Info.plist in Resources */,
 				3648364B275C25A50073F27E /* FuckHeadsReadME.rtf in Resources */,
 				362C4A81274337DE0050A97C /* Assets.xcassets in Resources */,

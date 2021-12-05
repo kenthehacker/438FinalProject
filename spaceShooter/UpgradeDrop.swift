@@ -31,6 +31,10 @@ class UpgradeDrop: MovableObject{
         self.upgrade = upgradeType.allCases.randomElement() ?? upgradeType.fasterFire   //picks a random enum case
     }
     
+    func isAlive() -> Bool {
+        return true
+    }
+    
     func getX() -> CGFloat {
         return curLoc.x
     }

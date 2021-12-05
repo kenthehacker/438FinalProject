@@ -33,9 +33,6 @@ final class GameView: UIView{
         }
     }
     
-    
-    
-    
     var enemies: [MovableObject] = [] {
         didSet {
             setNeedsDisplay()

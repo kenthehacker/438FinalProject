@@ -15,12 +15,15 @@ class EnemyBullet: MovableObject{
     var hitBound: CGRect
     var col = UIColor.white
     let speed = CGFloat(10)
-    var healthDamage = 5
+    var healthDamage = 10
     required init(location: CGPoint, size: Int){
         self.size = size
         self.curLoc = location
         let cgSize = CGFloat(self.size)
         self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
+    }
+    func isAlive() -> Bool {
+        return true
     }
     func setNewDamage(n: Int){
         self.healthDamage = n

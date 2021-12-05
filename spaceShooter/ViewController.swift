@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import AVFoundation
 
+var pewpew: AVAudioPlayer?
 var gameClock: CADisplayLink?
 var screenWidth = 370
 var screenHeight = 700
@@ -51,7 +53,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func update(){
         //check if the main character is dead
         
-        if gameView.mainCharacter.health<0{
+        if gameView.mainCharacter.health<=0{
             playerIsAlive = false
         }
         if !playerIsAlive && currentLevel != 666{
@@ -119,7 +121,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             gameView.mainCharacter.updateLocation(newLoc: touchPoint)
             beganTouchyTouchy = true
         }
-        
         isPlaying = true
     }
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -143,6 +144,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 bulletTimer = 0
                 let tempLocation = CGPoint(x: gameView.mainCharacter.getX() - 10, y: 690)
                 let tempBullet = Bullet(location: tempLocation, size: 20)
+                playSound()
                 if fastMode{
                     tempBullet.newSpeed(n: 20)
                 }
@@ -153,6 +155,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 bulletTimer = 0
                 let tempLocation = CGPoint(x: gameView.mainCharacter.getX() - 10, y: 690)
                 let tempBullet = Bullet(location: tempLocation, size: 20)
+                playSound()
                 gameView.items.append(tempBullet)
             }
         }
@@ -199,8 +202,24 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         
     }
-    
-    
+    // referenced https://stackoverflow.com/questions/32036146/how-to-play-a-sound-using-swift
+    func playSound() {
+        guard let url = Bundle.main.url(forResource: "shooting_sound", withExtension: "wav") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            pewpew = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
+
+            guard let player = pewpew else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     
     
     func shootBullets() {
@@ -289,6 +308,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             if enemyBullet.contains(point: gameView.mainCharacter.getPoint()){
                 let isAlive = gameView.mainCharacter.takeDamage(hp: enemyBullet.getDamage())
                 
+                //let index = gameView.enemyMagazine.firstIndex(of: enemyBullet)
+                
+                print("player hit")
+                break
             }
         }
         for i in gameView.upgrades{

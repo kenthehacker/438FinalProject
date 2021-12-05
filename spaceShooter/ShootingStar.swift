@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 class ShootingStar: MovableObject{
+    
     let speed = 5
     var curLoc: CGPoint
     var width = 3
@@ -20,7 +21,9 @@ class ShootingStar: MovableObject{
         self.colFloat = CGFloat(Float.random(in: 0.1..<0.8))
         self.star = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(width), height: CGFloat(height))
     }
-    
+    func isAlive() -> Bool {
+        return true
+    }
     func getX() -> CGFloat {
         return curLoc.x
     }

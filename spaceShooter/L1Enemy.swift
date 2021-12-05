@@ -20,6 +20,7 @@ class L1Enemy: MovableObject{
     var enemyBulletTicker = 0
     var col = UIColor.white
     var stopMove = false
+    
     required init(location: CGPoint, size: Int) {
         self.curLoc = location
         self.size = size
