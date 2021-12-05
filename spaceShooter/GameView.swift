@@ -150,6 +150,7 @@ final class GameView: UIView{
         items = []
         stars = []
         enemies = []
+        
         for v in self.subviews{
             v.removeFromSuperview()
             //removes all of the subviews
