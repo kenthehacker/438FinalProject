@@ -16,6 +16,7 @@ var screenHeight = 700
 var tick = 0
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var currentLevel = 1
+    
     let maxLevel = 3
     var playerIsAlive = true
     var beganTouchyTouchy = false
@@ -25,8 +26,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var enemyBulletTimer = 0
     var currentLocation:CGPoint?
     var score = 0
-    
     var levelStepCounter = 0
+    
+    //Level Specific Variables:
+    var localLevelTicker = 0
+    var numDiagsGenerated = 0
+    
     
     var fastMode = false
     @IBOutlet weak var gameView: GameView!
@@ -120,18 +125,31 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     func level2(){
-        var level2Ticker = 0
-        var numDiagsGenerated = 0
+        
+        localLevelTicker += 1
+        
         tick += 1
         bulletTimer += 1
         enemyBulletTimer += 1
         addBullet()
         scaledShootBullets()
-        scaledDidGetHit()   
+        scaledDidGetHit()
         shootBullets()
         didGetHit()
+        
+        if localLevelTicker == 1000{
+            let rand = Int.random(in: 0..<100)
+            if rand > 80 && numDiagsGenerated <= 10{
+                numDiagsGenerated += 1
+                createDiagEnemy()
+            }
+            localLevelTicker = 0
+        }
+        
         if levelStepCounter == 0{
             createEnemyFormation()
+            createZigZagEnemy()
+            createDiagEnemy()
             levelStepCounter += 1
         }
         var counter = 0
@@ -147,11 +165,34 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             levelStepCounter += 1
             createDiagEnemy()
         }
-        
+        if gameView.scaledEnemies.count == 0{
+            levelStepCounter += 1
+        }
+        if levelStepCounter == 4{
+            levelStepCounter += 1
+            createZigZagEnemy()
+            createZigZagEnemy()
+            createDiagEnemy()
+            createEnemyFormation()
+        }
+        if levelStepCounter >= 5 && gameView.scaledEnemies.count == 0{
+            var tempCount = 0
+            for i in gameView.isAlive{
+                if i == true{
+                    tempCount += 1
+                }
+            }
+            if tempCount == 0{
+                currentLevel += 1
+            }
+        }
         gameView.setNeedsDisplay()
         
     }
     func level3(){
+        
+    }
+    func levelBoss(){
         
     }
     func level666(){
@@ -230,7 +271,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let y_loc = [-20, -60, -100]
         for j in 0..<3 {
             for i in 0..<5 {
-                
                 gameView.numEnemy = gameView.numEnemy + 1
                 let location = CGPoint(x: x_loc[i], y: y_loc[j])
                 let enemy = L1Enemy(location: location, size: 30)
@@ -242,18 +282,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     //revert the changes
     func createDiagEnemy(){
-        //counter == 0
-        if true{
-            let tempDiag = DiagEnemy(location: CGPoint(x: Int.random(in: 350..<700), y: 0), size: 30)
-            
-            gameView.scaledEnemies.append(tempDiag)
-        }
-        //if all of the enemies are dead drop in the swirly enemies
-        
-        //during and after the l1 enemies, drop in a diag enemy
-        
-        
+        let tempDiag = DiagEnemy(location: CGPoint(x: Int.random(in: 350..<700), y: 0), size: 30)
+        gameView.scaledEnemies.append(tempDiag)
     }
+    func createZigZagEnemy(){
+        let randY = Int.random(in: 0..<200)
+        let spawnPoint = CGPoint(x: 0, y: randY)
+        let tempZigZag = ZigZagEnemy(location: spawnPoint, size: 30)
+        gameView.scaledEnemies.append(tempZigZag)
+    }
+    
+    
     // referenced https://stackoverflow.com/questions/32036146/how-to-play-a-sound-using-swift
     func playSound() {
         guard let url = Bundle.main.url(forResource: "shooting_sound", withExtension: "wav") else { return }
