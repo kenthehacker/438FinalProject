@@ -87,7 +87,6 @@ final class GameView: UIView{
     }
     func scaledCheckKillEnemy(loc: CGPoint){
         var i = 0
-        print(loc)
         while i < scaledEnemies.count{
             if scaledEnemies[i].contains(point: loc){
                 scaledEnemies.remove(at: i)
