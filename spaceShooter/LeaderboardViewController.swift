@@ -10,10 +10,14 @@ import Firebase
 import CoreLocation
 
 class LeaderboardViewController: UIViewController {
-
+    
+    var score: Int = 0
+    var username: String?
+    // Get username, if nil then generate random user number
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         let textAtt = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAtt
