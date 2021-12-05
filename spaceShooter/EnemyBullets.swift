@@ -13,13 +13,15 @@ class EnemyBullet: MovableObject{
     var curLoc: CGPoint
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.white
+    var col = UIColor.clear
     let speed = CGFloat(10)
     var healthDamage = 10
+    var image: UIImage
     required init(location: CGPoint, size: Int){
         self.size = size
         self.curLoc = location
         let cgSize = CGFloat(self.size)
+        image = UIImage(named: "SpaceShipGraphic")!
         self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
     }
     func isAlive() -> Bool {
@@ -48,6 +50,7 @@ class EnemyBullet: MovableObject{
     }
     func draw(){
         col.setFill()
+        self.image.draw(in: hitBound)
         self.updateLocation(newLoc: self.curLoc)
         let bezPath = UIBezierPath(rect: self.hitBound)
         bezPath.fill()

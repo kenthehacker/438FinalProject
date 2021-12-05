@@ -13,13 +13,15 @@ class Bullet: MovableObject{
     var curLoc: CGPoint
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.white
+    var image: UIImage
+    var col = UIColor.clear
     var speed = CGFloat(10)
     required init(location: CGPoint, size: Int){
         self.size = size
         self.curLoc = location
         let cgSize = CGFloat(self.size)
         self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
+        self.image = UIImage(named: "SpaceShipGraphic")!
     }
     func newSpeed(n: Int){
         self.speed = CGFloat(n)
@@ -40,8 +42,10 @@ class Bullet: MovableObject{
         return bezPath.contains(point)
     }
     func draw(){
+        
         col.setFill()
         self.updateLocation(newLoc: self.curLoc)
+        self.image.draw(in: hitBound)
         let bezPath = UIBezierPath(rect: self.hitBound)
         bezPath.fill()
         
