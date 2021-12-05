@@ -134,7 +134,7 @@
                                         <attributes>
                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="30" name="HoeflerText-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -145,7 +145,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="gameOverLabel" destination="KRW-VN-ejY" id="xpd-Yc-FFZ"/>
                         <outlet property="score" destination="mGx-ht-arK" id="6DQ-N7-Gb3"/>
+                        <outlet property="scoreLabel" destination="F5e-Vo-oL9" id="3fg-dH-rsj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4a-Zs-4bP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

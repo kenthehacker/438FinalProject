@@ -9,11 +9,18 @@ import UIKit
 
 class GameOver: UIViewController {
 
+    @IBOutlet weak var gameOverLabel: UILabel!
     @IBOutlet weak var score: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     var displayScore: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        gameOverLabel.textColor = UIColor.white
+        scoreLabel.textColor = UIColor.white
+        score.textColor = UIColor.white
+        
         score.text = String(displayScore)
         self.navigationItem.setHidesBackButton(true, animated: false)
         // Do any additional setup after loading the view.
