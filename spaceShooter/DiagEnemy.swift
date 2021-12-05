@@ -13,12 +13,14 @@ class DiagEnemy:MovableObject{
     var health: Int = 100
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.blue
+    var col = UIColor.clear
+    var image: UIImage
     var speed = CGFloat(2)
     var alive = true
     required init(location: CGPoint, size: Int) {
         self.curLoc = location
         self.size = size
+        self.image = UIImage(named: "GalagaEnemy2")!
         self.hitBound = CGRect(x: location.x, y: location.y, width: CGFloat(size), height: CGFloat(size))
     }
     func getX() -> CGFloat{
@@ -50,6 +52,7 @@ class DiagEnemy:MovableObject{
     func draw() {
         col.setFill()
         self.updateLocation(newLoc: curLoc)
+        self.image.draw(in: hitBound)
         let bezPath = UIBezierPath(rect: self.hitBound)
         bezPath.fill()
     }
