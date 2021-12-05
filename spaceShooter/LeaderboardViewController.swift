@@ -28,7 +28,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         navigationController?.navigationBar.titleTextAttributes = textAtt
         self.navigationController?.navigationBar.tintColor = UIColor.white;
 
-        setName()
+        //setName()
         fetchData()
     }
     
@@ -78,8 +78,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     //regionArray.append(loc.value ?? "Unknown region" as! String)
                     
                     let score = values.children.allObjects.last as! DataSnapshot
-                    print(score.value ?? 0)
-                    //scoreArray.append(score.value ?? 0 as! Int)
+                    let printedScore = score.value ?? 0 as! Int
+                    //print(score.value ?? 0)
+                    print(type(of: printedScore))
+                    //scoreArray.append(printedScore)
                 }
             }
         });
@@ -91,7 +93,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leaderTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel!.text = (userArray[indexPath.row].value(forKeyPath: "name") as! String)
+        cell.textLabel!.numberOfLines = 0
+        cell.textLabel!.text = ("\(userArray[indexPath.row])\nScore: \(scoreArray[indexPath.row])")
         return cell
     }
     /*
