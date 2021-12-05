@@ -14,6 +14,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     var score: Int = 0
     var username: String?
     var leaderboardArr: [LeaderboardObjects] = []
+    var visited: Bool = false
     
     @IBOutlet weak var leaderTable: UITableView!
     
@@ -30,6 +31,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         setupTableView()
     }
     
+    /// Alert popup for user to enter username, or default to random username
     func setName() {
         let randomNum = Int.random(in: 1001..<10000)
         let alert = UIAlertController(title: "Username for the leaderboard", message: nil, preferredStyle: .alert)
@@ -49,13 +51,17 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         self.present(alert, animated: true, completion: nil)
     }
     
+    /// Sends name, score, region to Firebase database
     func data(name: String, score: Int){
         var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("Users").child(name).setValue(["score": score, "location": Locale.current.regionCode ?? ""])
+        leaderboardArr.removeAll()
+        leaderTable.reloadData()
         fetchData()
     }
     
+    /// Gets data from Firebase
     func fetchData() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
@@ -64,7 +70,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
             print(error!.localizedDescription)
             return;
           }
-
             if let snap = snapshot.children.allObjects as? [DataSnapshot]{
                 for values in snap{
                     let loc = values.children.allObjects.first as! DataSnapshot
@@ -79,9 +84,10 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         })
     }
     
+    /// Loads table when view about to appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if score > 0 {
+        if score > 0 && visited == false{
             setName()
         }
         fetchData()
@@ -98,6 +104,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         return leaderboardArr.count
     }
     
+    /// Formats table and cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leaderTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
@@ -110,14 +117,4 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         cell.backgroundColor = UIColor.black
         return cell
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

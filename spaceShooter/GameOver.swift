@@ -14,21 +14,25 @@ class GameOver: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     
     var displayScore: Int = 0
+    var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         gameOverLabel.textColor = UIColor.white
         scoreLabel.textColor = UIColor.white
         score.textColor = UIColor.white
-        
         score.text = String(displayScore)
         self.navigationItem.setHidesBackButton(true, animated: false)
-        // Do any additional setup after loading the view.
     }
     
+    /// Navigates user to leaderboard screen
     @IBAction func leaderboard_button(_ sender: UIButton) {
         let leaderboardVC = storyboard!.instantiateViewController(withIdentifier: "LeaderboardViewController") as! LeaderboardViewController
         leaderboardVC.score = self.displayScore
+        if counter > 0 {
+            leaderboardVC.visited = true
+        }
+        counter += 1
         navigationController?.pushViewController(leaderboardVC, animated: true)
     }
     
@@ -43,18 +47,9 @@ class GameOver: UIViewController {
         navigationController?.pushViewController(playVC, animated: true)
     }
     
+    /// Returns user to home
     @IBAction func rth_button(_ sender: UIButton) {
         let launchVC = storyboard!.instantiateViewController(withIdentifier: "LaunchViewController") as! LaunchViewController
         navigationController?.pushViewController(launchVC, animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Contains objects for leaderboard
 class LeaderboardObjects {
     var username: String
     var score: Int
@@ -18,5 +19,4 @@ class LeaderboardObjects {
         self.score = score
         self.region = region
     }
-    
 }
