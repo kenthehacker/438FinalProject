@@ -34,7 +34,7 @@ class GameOver: UIViewController {
     
     @IBAction func play_button(_ sender: UIButton) {
         let playVC = storyboard!.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        playVC.createEnemiesL1()
+        playVC.createEnemyFormation()
         playVC.backgroundMusic()
         playVC.gameView.mainCharacter.health = 200
         playVC.gameView.numEnemy = 0

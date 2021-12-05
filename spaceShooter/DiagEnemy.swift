@@ -14,7 +14,7 @@ class DiagEnemy:MovableObject{
     var size: Int
     var hitBound: CGRect
     var col = UIColor.blue
-    var speed = CGFloat(6)
+    var speed = CGFloat(2)
     var alive = true
     required init(location: CGPoint, size: Int) {
         self.curLoc = location
@@ -49,6 +49,7 @@ class DiagEnemy:MovableObject{
     
     func draw() {
         col.setFill()
+        self.updateLocation(newLoc: curLoc)
         let bezPath = UIBezierPath(rect: self.hitBound)
         bezPath.fill()
     }

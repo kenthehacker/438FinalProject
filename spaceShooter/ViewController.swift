@@ -21,9 +21,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var beganTouchyTouchy = false
     var isPlaying = false
     var bulletTimer = 0
+    var scaledEnemyBulletTimer = 0
     var enemyBulletTimer = 0
     var currentLocation:CGPoint?
     var score = 0
+    
+    var levelStepCounter = 0
+    
     var fastMode = false
     @IBOutlet weak var gameView: GameView!
     //var gameView: GameView!
@@ -47,7 +51,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
 
         gameView.mainCharacter = spaceShip
-        createEnemiesL1()
+        
+        //REMOVE THIS
+        createEnemyFormation()
+        
         //originally said start level1()
         // Do any additional setup after loading the view.
     }
@@ -77,7 +84,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             else if currentLevel == 2{
                 level2()
-                print("level 2")
+            }else if currentLevel == 3{
+                level3()
             }
             
             
@@ -98,10 +106,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         for i in gameView.isAlive{
             if i == true{
                 counter += 1
+                
             }
         }
-        
+        //REMOVE THIS
+        currentLevel = currentLevel+1
         if counter == 0{
+            
             currentLevel = currentLevel+1
         }
         
@@ -109,12 +120,58 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     func level2(){
+        var level2Ticker = 0
+        var numDiagsGenerated = 0
+        tick += 1
+        bulletTimer += 1
+        enemyBulletTimer += 1
+        addBullet()
+        scaledShootBullets()
+        scaledDidGetHit()   
+        shootBullets()
+        didGetHit()
+        if levelStepCounter == 0{
+            createEnemyFormation()
+            levelStepCounter += 1
+        }
+        var counter = 0
+        for i in gameView.isAlive{
+            if i == true{
+                counter += 1
+            }
+        }
+        if counter == 0{
+            levelStepCounter += 1
+        }
+        if levelStepCounter == 2{
+            levelStepCounter += 1
+            createDiagEnemy()
+        }
+        
+        gameView.setNeedsDisplay()
         
     }
     func level3(){
         
     }
     func level666(){
+        
+    }
+    func scaledShootBullets(){
+        scaledEnemyBulletTimer = scaledEnemyBulletTimer+1
+        if scaledEnemyBulletTimer > 40{
+            scaledEnemyBulletTimer = 0
+        }
+        if scaledEnemyBulletTimer == 0{
+            for i in gameView.scaledEnemies{
+                let random = Int.random(in: 0..<100)
+                if random > 0{
+                    let loc = CGPoint(x: i.getX(), y: i.getY())
+                    let bullet = EnemyBullet(location: loc, size: 20)
+                    gameView.enemyMagazine.append(bullet)
+                }
+            }
+        }
         
     }
     
@@ -167,13 +224,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    /*
-    func startLevel1() {
-        createEnemiesLevelOne()
-    }
-     */
-    
-    func createEnemiesL1() {
+    //revert the changes
+    func createEnemyFormation() {
         let x_loc = [55, 110, 165, 225, 280]
         let y_loc = [-20, -60, -100]
         for j in 0..<3 {
@@ -188,19 +240,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let isAlive: [Bool] = [Bool](repeating: true, count: gameView.numEnemy)
         gameView.isAlive = isAlive
     }
-    
-    func createEnemiesL2(){
-        var numDiagGenerated = 0
-        createEnemiesL1()
-        var counter = 0
-        for i in gameView.isAlive{
-            if i == true{
-                counter += 1
-            }
-        }
-        if counter == 0{
-            numDiagGenerated = numDiagGenerated + 1
+    //revert the changes
+    func createDiagEnemy(){
+        //counter == 0
+        if true{
             let tempDiag = DiagEnemy(location: CGPoint(x: Int.random(in: 350..<700), y: 0), size: 20)
+            
             gameView.scaledEnemies.append(tempDiag)
         }
         //if all of the enemies are dead drop in the swirly enemies
@@ -306,6 +351,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         return shootingEnemy
+    }
+    
+    func scaledDidGetHit(){
+        for bullet in gameView.items{
+            let temp = CGPoint(x: bullet.getX(), y: bullet.getY())
+            gameView.scaledCheckKillEnemy(loc: temp)
+        }
     }
     
     func didGetHit(){

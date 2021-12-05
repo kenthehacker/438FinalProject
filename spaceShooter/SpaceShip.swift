@@ -14,7 +14,7 @@ class SpaceShip: MovableObject{
     var hitBound: CGRect
     var col = UIColor.clear
     required init(location: CGPoint, size:Int){
-        self.health = 2
+        self.health = 200
         self.curLoc = location
         self.size = size
         let cgSize = CGFloat(self.size)
