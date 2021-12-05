@@ -35,11 +35,12 @@ class ZigZagEnemy: MovableObject{
             self.speed = self.speed * -1
             self.curLoc = CGPoint(x: CGFloat(screenWidth) - CGFloat(5), y: curLoc.y) //we shift by 5 units to prevent the object from getting stuck
         }
-        if Int(self.getX()) > screenWidth{
+        if Int(self.getX()) < 0{
             self.speed = self.speed * -1
-            self.curLoc = CGPoint(x: CGFloat(screenWidth) + CGFloat(5), y: curLoc.y) //we shift by 5 units to prevent the object from getting stuck
+            self.curLoc = CGPoint(x: 0 + CGFloat(5), y: curLoc.y) //we shift by 5 units to prevent the object from getting stuck
         }
         self.curLoc = CGPoint(x: curLoc.x+CGFloat(speed), y: curLoc.y)
+        self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     
     func contains(point: CGPoint) -> Bool {
@@ -49,7 +50,9 @@ class ZigZagEnemy: MovableObject{
     }
     
     func draw() {
+        
         col.setFill()
+        updateLocation(newLoc: curLoc)
         let bezPath = UIBezierPath(rect: self.hitBound)
         bezPath.fill()
     }
