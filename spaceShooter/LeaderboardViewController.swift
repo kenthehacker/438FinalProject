@@ -9,10 +9,15 @@ import UIKit
 import Firebase
 import CoreLocation
 
-class LeaderboardViewController: UIViewController {
+class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var score: Int = 0
     var username: String?
+    var userArray: [String] = []
+    var scoreArray: [Int] = []
+    var regionArray: [String] = []
+    @IBOutlet weak var leaderTable: UITableView!
+    
     // Get username, if nil then generate random user number
 
     override func viewDidLoad() {
@@ -48,14 +53,16 @@ class LeaderboardViewController: UIViewController {
     
     func data(name: String, score: Int){
         var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("Users").child(name).setValue(["score": score, "location": Locale.current.regionCode ?? ""])
+        if score > 0 {
+            ref = Database.database().reference()
+            ref.child("Users").child(name).setValue(["score": score, "location": Locale.current.regionCode ?? ""])
+        }
     }
     
     func fetchData() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("Users").getData(completion:  { error, snapshot in
+        ref.child("Users").getData(completion:  { [self] error, snapshot in
           guard error == nil else {
             print(error!.localizedDescription)
             return;
@@ -64,17 +71,29 @@ class LeaderboardViewController: UIViewController {
             if let snap = snapshot.children.allObjects as? [DataSnapshot]{
                 for values in snap{
                     print(values.key)
+                    userArray.append(values.key)
 
                     let loc = values.children.allObjects.first as! DataSnapshot
                     print(loc.value ?? "Unknown region")
+                    regionArray.append(loc.value ?? "Unknown region")
                     
                     let score = values.children.allObjects.last as! DataSnapshot
                     print(score.value ?? 0)
+                    scoreArray.append(score.value ?? 0)
                 }
             }
         });
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = leaderTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel!.text = (userArray[indexPath.row].value(forKeyPath: "name") as! String)
+        return cell
+    }
     /*
     // MARK: - Navigation
 
