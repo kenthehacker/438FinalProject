@@ -315,7 +315,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         for i in gameView.upgrades{
-            if i.contains(point: gameView.mainCharacter.getPoint()){
+            if gameView.mainCharacter.contains(point: i.curLoc){
+                
+            //if i.contains(point: gameView.mainCharacter.getPoint()){
+                print("FFFF")
                 if i.upgrade == .healthBoost{
                     gameView.mainCharacter.healthBoost(n: 10)
                 }
