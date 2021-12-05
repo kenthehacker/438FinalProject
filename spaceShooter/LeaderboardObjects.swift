@@ -19,5 +19,4 @@ class LeaderboardObjects {
         self.region = region
     }
     
-    
 }

@@ -72,6 +72,9 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     leaderboardArr.append(LeaderboardObjects(username: values.key, score: score.value! as! Int, region: loc.value! as! String))
                 }
             }
+            leaderboardArr.sort {
+                $0.score > $1.score
+            }
             leaderTable.reloadData()
         })
     }
@@ -103,11 +106,6 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         content.textProperties.color = UIColor.white
         content.secondaryText = "Score: \(leaderboardArr[indexPath.row].score)"
         content.secondaryTextProperties.color = UIColor.white
-        
-        //content.attributedText = NSAttributedString(string: "\(userArray[indexPath.row]) (\(regionArray[indexPath.row]))")
-        
-        //cell.textLabel!.numberOfLines = 0
-        //cell.textLabel!.text = ("\(userArray[indexPath.row])\nRegion: \(regionArray[indexPath.row])")
         cell.contentConfiguration = content
         cell.backgroundColor = UIColor.black
         return cell
