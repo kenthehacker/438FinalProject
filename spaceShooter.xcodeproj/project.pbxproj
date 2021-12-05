@@ -36,6 +36,7 @@
 		7D585FDD2759E3E60047E71E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7D585FDC2759E3E60047E71E /* FirebaseDatabase */; };
 		7D585FDF2759E3E60047E71E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7D585FDE2759E3E60047E71E /* FirebaseFirestore */; };
 		7D585FE12759E3E60047E71E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7D585FE02759E3E60047E71E /* FirebaseStorage */; };
+		7D62E82D275D730C00F4BD57 /* LeaderboardObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D62E82C275D730C00F4BD57 /* LeaderboardObjects.swift */; };
 		7D7502532759CA74007EF51B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7502522759CA74007EF51B /* LaunchViewController.swift */; };
 		7DF5F1CA275C61D900755B20 /* shooting_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7DF5F1C9275C61D900755B20 /* shooting_sound.wav */; };
 		7DF5F1CE275C6FA700755B20 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF5F1CD275C6FA700755B20 /* GameOver.swift */; };
@@ -90,6 +91,7 @@
 		36BF899C27446D0B001047AE /* EnemyBullets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyBullets.swift; sourceTree = "<group>"; };
 		7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		7D585FD72759E3AD0047E71E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7D62E82C275D730C00F4BD57 /* LeaderboardObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardObjects.swift; sourceTree = "<group>"; };
 		7D7502522759CA74007EF51B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		7DF5F1C9275C61D900755B20 /* shooting_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shooting_sound.wav; sourceTree = "<group>"; };
 		7DF5F1CD275C6FA700755B20 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				362C4A7D274337DB0050A97C /* Main.storyboard */,
 				7DF5F1CD275C6FA700755B20 /* GameOver.swift */,
 				7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */,
+				7D62E82C275D730C00F4BD57 /* LeaderboardObjects.swift */,
 				7D7502522759CA74007EF51B /* LaunchViewController.swift */,
 				362C4A80274337DE0050A97C /* Assets.xcassets */,
 				362C4A82274337DE0050A97C /* LaunchScreen.storyboard */,
@@ -357,6 +360,7 @@
 				36483643275C10F60073F27E /* SpinningEnemy.swift in Sources */,
 				7D7502532759CA74007EF51B /* LaunchViewController.swift in Sources */,
 				362C4AAC27433B660050A97C /* GameView.swift in Sources */,
+				7D62E82D275D730C00F4BD57 /* LeaderboardObjects.swift in Sources */,
 				362C4AB6274372820050A97C /* ShootingStar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

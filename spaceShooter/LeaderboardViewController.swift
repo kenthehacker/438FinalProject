@@ -13,9 +13,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     
     var score: Int = 0
     var username: String?
-    var userArray: [String] = []
-    var scoreArray: [Int] = []
-    var regionArray: [String] = []
+    var leaderboardArr: [LeaderboardObjects] = []
+    
     @IBOutlet weak var leaderTable: UITableView!
     
     // Get username, if nil then generate random user number
@@ -27,9 +26,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         let textAtt = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAtt
         self.navigationController?.navigationBar.tintColor = UIColor.white;
-
-        //setName()
-        fetchData()
+        
+        setupTableView()
     }
     
     func setName() {
@@ -53,16 +51,15 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     
     func data(name: String, score: Int){
         var ref: DatabaseReference!
-        if score > 0 {
-            ref = Database.database().reference()
-            ref.child("Users").child(name).setValue(["score": score, "location": Locale.current.regionCode ?? ""])
-        }
+        ref = Database.database().reference()
+        ref.child("Users").child(name).setValue(["score": score, "location": Locale.current.regionCode ?? ""])
+        fetchData()
     }
     
     func fetchData() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("Users").getData(completion:  { [self] error, snapshot in
+        ref.child("Users").getData(completion: { [self] error, snapshot in
           guard error == nil else {
             print(error!.localizedDescription)
             return;
@@ -70,31 +67,49 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
 
             if let snap = snapshot.children.allObjects as? [DataSnapshot]{
                 for values in snap{
-                    print(values.key)
-                    userArray.append(values.key)
-
                     let loc = values.children.allObjects.first as! DataSnapshot
-                    print(loc.value ?? "Unknown region")
-                    //regionArray.append(loc.value ?? "Unknown region" as! String)
-                    
                     let score = values.children.allObjects.last as! DataSnapshot
-                    let printedScore = score.value ?? 0 as! Int
-                    //print(score.value ?? 0)
-                    print(type(of: printedScore))
-                    //scoreArray.append(printedScore)
+                    leaderboardArr.append(LeaderboardObjects(username: values.key, score: score.value! as! Int, region: loc.value! as! String))
                 }
             }
-        });
+            leaderTable.reloadData()
+        })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if score > 0 {
+            setName()
+        }
+        fetchData()
+    }
+    
+    /// Initializes table view
+    func setupTableView() {
+        leaderTable.dataSource = self
+        leaderTable.delegate = self
+        leaderTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userArray.count
+        return leaderboardArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leaderTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel!.numberOfLines = 0
-        cell.textLabel!.text = ("\(userArray[indexPath.row])\nScore: \(scoreArray[indexPath.row])")
+        var content = cell.defaultContentConfiguration()
+        content.prefersSideBySideTextAndSecondaryText = true
+        content.text = "\(leaderboardArr[indexPath.row].username) (\(leaderboardArr[indexPath.row].region))"
+        content.textProperties.color = UIColor.white
+        content.secondaryText = "Score: \(leaderboardArr[indexPath.row].score)"
+        content.secondaryTextProperties.color = UIColor.white
+        
+        //content.attributedText = NSAttributedString(string: "\(userArray[indexPath.row]) (\(regionArray[indexPath.row]))")
+        
+        //cell.textLabel!.numberOfLines = 0
+        //cell.textLabel!.text = ("\(userArray[indexPath.row])\nRegion: \(regionArray[indexPath.row])")
+        cell.contentConfiguration = content
+        cell.backgroundColor = UIColor.black
         return cell
     }
     /*
