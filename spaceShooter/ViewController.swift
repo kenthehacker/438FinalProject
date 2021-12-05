@@ -233,7 +233,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 
                 gameView.numEnemy = gameView.numEnemy + 1
                 let location = CGPoint(x: x_loc[i], y: y_loc[j])
-                let enemy = L1Enemy(location: location, size: 20)
+                let enemy = L1Enemy(location: location, size: 30)
                 gameView.enemies.append(enemy)
             }
         }
@@ -244,7 +244,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     func createDiagEnemy(){
         //counter == 0
         if true{
-            let tempDiag = DiagEnemy(location: CGPoint(x: Int.random(in: 350..<700), y: 0), size: 20)
+            let tempDiag = DiagEnemy(location: CGPoint(x: Int.random(in: 350..<700), y: 0), size: 30)
             
             gameView.scaledEnemies.append(tempDiag)
         }
@@ -333,7 +333,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 return
             }
             let location = CGPoint(x: (Int)(gameView.enemies[shootingEnemy].getX()), y: (Int)(gameView.enemies[shootingEnemy].getY()) + 40)
-            let enemy = EnemyBullet(location: location, size: 20)
+            let enemy = EnemyBullet(location: location, size: 30)
             gameView.enemyMagazine.append(enemy)
         }
     }
@@ -368,7 +368,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if enemy.contains(point: CGPoint(x: bullet.getX() + 10, y: bullet.getY())) && gameView.isAlive[enemyNumber]{
                     
                     if Int.random(in: 1..<100) >= 90{
-                        gameView.upgrades.append(UpgradeDrop(location: CGPoint(x: bullet.getX() + 10, y: bullet.getY()), size: 10))
+                        gameView.upgrades.append(UpgradeDrop(location: CGPoint(x: bullet.getX() + 10, y: bullet.getY()), size: 30))
                     }
                     
                     gameView.isAlive[enemyNumber] = false

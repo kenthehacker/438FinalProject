@@ -13,6 +13,7 @@ class UpgradeDrop: MovableObject{
     var size: Int
     var hitBound: CGRect
     var col = UIColor.red
+    var image: UIImage
     let speed = CGFloat(5)
     
     
@@ -26,6 +27,7 @@ class UpgradeDrop: MovableObject{
     required init(location: CGPoint, size: Int) {
         self.size = size
         self.curLoc = location
+        self.image = UIImage(named: "Upgrade")!
         let cgSize = CGFloat(self.size)
         self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
         self.upgrade = upgradeType.allCases.randomElement() ?? upgradeType.fasterFire   //picks a random enum case
@@ -57,6 +59,7 @@ class UpgradeDrop: MovableObject{
     func draw() {
         col.setFill()
         self.updateLocation(newLoc: curLoc)
+        self.image.draw(in: hitBound)
         let bezPath = UIBezierPath(rect: self.hitBound)
         bezPath.fill()
     }
