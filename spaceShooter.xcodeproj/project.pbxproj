@@ -37,6 +37,7 @@
 		7D585FE12759E3E60047E71E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7D585FE02759E3E60047E71E /* FirebaseStorage */; };
 		7D7502532759CA74007EF51B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7502522759CA74007EF51B /* LaunchViewController.swift */; };
 		7DF5F1CA275C61D900755B20 /* shooting_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7DF5F1C9275C61D900755B20 /* shooting_sound.wav */; };
+		7DF5F1CE275C6FA700755B20 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF5F1CD275C6FA700755B20 /* GameOver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		7D585FD72759E3AD0047E71E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7D7502522759CA74007EF51B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		7DF5F1C9275C61D900755B20 /* shooting_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shooting_sound.wav; sourceTree = "<group>"; };
+		7DF5F1CD275C6FA700755B20 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				362C4A7B274337DB0050A97C /* ViewController.swift */,
 				7DF5F1C9275C61D900755B20 /* shooting_sound.wav */,
 				362C4A7D274337DB0050A97C /* Main.storyboard */,
+				7DF5F1CD275C6FA700755B20 /* GameOver.swift */,
 				7D3A17C22759D033006FA028 /* LeaderboardViewController.swift */,
 				7D7502522759CA74007EF51B /* LaunchViewController.swift */,
 				362C4A80274337DE0050A97C /* Assets.xcassets */,
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36BF899D27446D0B001047AE /* EnemyBullets.swift in Sources */,
+				7DF5F1CE275C6FA700755B20 /* GameOver.swift in Sources */,
 				362C4AB027435DB30050A97C /* Bullets.swift in Sources */,
 				7D3A17C32759D033006FA028 /* LeaderboardViewController.swift in Sources */,
 				36483641275C10C80073F27E /* DiagEnemy.swift in Sources */,

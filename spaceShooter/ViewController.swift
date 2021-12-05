@@ -63,6 +63,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         else if !playerIsAlive && currentLevel == 666{
             //TODO: put on the leaderboard screen
+            gameView.clearScreen()
         }
         else{
             if currentLevel == 1{
@@ -304,16 +305,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             enemyNumber += 1
         }
         
-        for enemyBullet in gameView.enemyMagazine{
+        for (index, enemyBullet) in gameView.enemyMagazine.enumerated(){
             if enemyBullet.contains(point: gameView.mainCharacter.getPoint()){
                 let isAlive = gameView.mainCharacter.takeDamage(hp: enemyBullet.getDamage())
+                gameView.enemyMagazine.remove(at: index)
                 
-                //let index = gameView.enemyMagazine.firstIndex(of: enemyBullet)
-                
-                print("player hit")
+                print("player hit, \(gameView.mainCharacter.health)")
                 break
             }
         }
+        
         for i in gameView.upgrades{
             if gameView.mainCharacter.contains(point: i.curLoc){
                 
