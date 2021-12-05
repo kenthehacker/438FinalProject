@@ -49,7 +49,6 @@ class LeaderboardViewController: UIViewController {
     func data(name: String, score: Int){
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        //ref.child(name).child(Locale.current.regionCode ?? "").setValue(score) // value = score
         ref.child("Users").child(name).setValue(["score": score, "location": Locale.current.regionCode ?? ""])
     }
     
@@ -62,18 +61,17 @@ class LeaderboardViewController: UIViewController {
             return;
           }
 
-        if let snap = snapshot.children.allObjects as? [DataSnapshot]{
-            for (index, val) in snap.enumerated(){
-                print("values")
-                //print(val)
-                print(val.key)
-                print(val.value!)
-                print(type(of: val.value!))
-                //print(val.value)
+            if let snap = snapshot.children.allObjects as? [DataSnapshot]{
+                for values in snap{
+                    print(values.key)
 
+                    let loc = values.children.allObjects.first as! DataSnapshot
+                    print(loc.value ?? "Unknown region")
+                    
+                    let score = values.children.allObjects.last as! DataSnapshot
+                    print(score.value ?? 0)
+                }
             }
-        }
-          //let userName = snapshot.value as? String ?? "Unknown";
         });
     }
 
