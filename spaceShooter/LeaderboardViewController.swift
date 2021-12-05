@@ -75,11 +75,11 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
 
                     let loc = values.children.allObjects.first as! DataSnapshot
                     print(loc.value ?? "Unknown region")
-                    regionArray.append(loc.value ?? "Unknown region")
+                    //regionArray.append(loc.value ?? "Unknown region" as! String)
                     
                     let score = values.children.allObjects.last as! DataSnapshot
                     print(score.value ?? 0)
-                    scoreArray.append(score.value ?? 0)
+                    //scoreArray.append(score.value ?? 0 as! Int)
                 }
             }
         });
