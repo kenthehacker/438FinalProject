@@ -12,7 +12,7 @@ class UpgradeDrop: MovableObject{
     var curLoc: CGPoint
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.red
+    var col = UIColor.clear
     var image: UIImage
     let speed = CGFloat(5)
     

@@ -12,7 +12,8 @@ class SpinningEnemy:MovableObject{
     var health: Int = 100
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.blue
+    var col = UIColor.clear
+    var image: UIImage
     var speed = CGFloat(6)
     var alive = true
     var radius: Int = 50
@@ -20,6 +21,7 @@ class SpinningEnemy:MovableObject{
     required init(location: CGPoint, size: Int) {
         self.curLoc = location
         self.size = size
+        self.image = UIImage(named: "GalagaEnemy1")!
         self.hitBound = CGRect(x: location.x, y: location.y, width: CGFloat(size), height: CGFloat(size))
     }
     
@@ -53,6 +55,8 @@ class SpinningEnemy:MovableObject{
     }
     func draw() {
         col.setFill()
+        self.updateLocation(newLoc: curLoc)
+        self.image.draw(in: hitBound)
         let bezPath = UIBezierPath(rect: self.hitBound)
         bezPath.fill()
     }
