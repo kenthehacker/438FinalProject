@@ -23,7 +23,7 @@ class LeaderboardViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAtt
         self.navigationController?.navigationBar.tintColor = UIColor.white;
 
-        //setName()
+        setName()
         fetchData()
     }
     
@@ -32,7 +32,7 @@ class LeaderboardViewController: UIViewController {
         let alert = UIAlertController(title: "Username for the leaderboard", message: nil, preferredStyle: .alert)
         alert.addTextField()
             
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Default name", comment: "cancel"), style: .default, handler: { [self, unowned alert] _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Default name", comment: "cancel"), style: .default, handler: { [self] _ in
             self.username = "User \(randomNum)"
             data(name: username!, score: score)
         }))
