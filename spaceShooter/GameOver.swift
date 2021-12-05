@@ -36,17 +36,6 @@ class GameOver: UIViewController {
         navigationController?.pushViewController(leaderboardVC, animated: true)
     }
     
-    @IBAction func play_button(_ sender: UIButton) {
-        let playVC = storyboard!.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        playVC.createEnemyFormation()
-        playVC.backgroundMusic()
-        playVC.gameView.mainCharacter.health = 200
-        playVC.gameView.numEnemy = 0
-        gameClock = CADisplayLink(target: self, selector: #selector(playVC.update))
-        gameClock?.add(to: .current, forMode: .common)
-        navigationController?.pushViewController(playVC, animated: true)
-    }
-    
     /// Returns user to home
     @IBAction func rth_button(_ sender: UIButton) {
         let launchVC = storyboard!.instantiateViewController(withIdentifier: "LaunchViewController") as! LaunchViewController
