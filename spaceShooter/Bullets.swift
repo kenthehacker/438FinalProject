@@ -20,8 +20,8 @@ class Bullet: MovableObject{
         self.size = size
         self.curLoc = location
         let cgSize = CGFloat(self.size)
+        self.image = UIImage(named: "FriendlyBullet")!
         self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
-        self.image = UIImage(named: "SpaceShipGraphic")!
     }
     func newSpeed(n: Int){
         self.speed = CGFloat(n)
@@ -37,7 +37,7 @@ class Bullet: MovableObject{
         self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     func contains(point: CGPoint) -> Bool{
-        let bound = CGRect(x:hitBound.minX-10, y: hitBound.minY-10, width: hitBound.width+20, height: hitBound.height+20)
+        let bound = CGRect(x:hitBound.minX-10, y: hitBound.minY-10, width: hitBound.width, height: hitBound.height)
         let bezPath = UIBezierPath(rect: bound)
         return bezPath.contains(point)
     }

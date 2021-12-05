@@ -18,12 +18,14 @@ class L1Enemy: MovableObject{
     var size: Int
     var hitBound: CGRect
     var enemyBulletTicker = 0
-    var col = UIColor.white
+    var col = UIColor.clear
+    var image: UIImage
     var stopMove = false
     
     required init(location: CGPoint, size: Int) {
         self.curLoc = location
         self.size = size
+        self.image = UIImage(named: "GalagaEnemy3")!
         self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     
@@ -68,6 +70,7 @@ class L1Enemy: MovableObject{
     func draw() {
         col.setFill()
         self.updateLocation(newLoc: self.curLoc)
+        self.image.draw(in: hitBound)
         let bezPath = UIBezierPath(rect: self.hitBound)
         bezPath.fill()
         enemyBulletTicker = enemyBulletTicker + 1

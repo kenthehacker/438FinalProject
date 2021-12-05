@@ -41,8 +41,8 @@ class SpinningEnemy:MovableObject{
     }
     
     func updateLocation(newLoc: CGPoint) {
-        let newX = self.curLoc.x + Double(self.radius)*cos(Double(speed)*Double.pi / 180.0)
-        let newY = self.curLoc.y + Double(self.radius)*sin(Double(speed)*Double.pi / 180.0)
+        let newX = Double(self.curLoc.x) + Double(self.radius)*cos(Double(speed)*Double.pi / 180.0)
+        let newY = Double(self.curLoc.y) + Double(self.radius)*sin(Double(speed)*Double.pi / 180.0)
         curLoc = CGPoint(x: newX, y: newY)
     }
     

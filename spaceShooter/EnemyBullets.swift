@@ -21,7 +21,7 @@ class EnemyBullet: MovableObject{
         self.size = size
         self.curLoc = location
         let cgSize = CGFloat(self.size)
-        image = UIImage(named: "SpaceShipGraphic")!
+        image = UIImage(named: "EnemyBullet")!
         self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
     }
     func isAlive() -> Bool {
