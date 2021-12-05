@@ -66,6 +66,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         else if !playerIsAlive && currentLevel == 666{
             //TODO: put on the leaderboard screen
             gameView.clearScreen()
+            gameClock?.remove(from: .current, forMode: .common)
+            let gameOverVC = storyboard!.instantiateViewController(withIdentifier: "GameOver") as! GameOver
+            gameOverVC.displayScore = score
+            navigationController?.pushViewController(gameOverVC, animated: true)
         }
         else{
             if currentLevel == 1{

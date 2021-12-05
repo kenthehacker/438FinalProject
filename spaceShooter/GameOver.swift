@@ -10,10 +10,12 @@ import UIKit
 class GameOver: UIViewController {
 
     @IBOutlet weak var score: UILabel!
+    var displayScore: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        score.text = String(displayScore)
+        self.navigationItem.setHidesBackButton(true, animated: false)
         // Do any additional setup after loading the view.
     }
     
