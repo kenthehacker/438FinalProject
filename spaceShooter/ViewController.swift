@@ -9,6 +9,7 @@ import UIKit
 import AVFoundation
 
 var pewpew: AVAudioPlayer?
+var background_music: AVAudioPlayer?
 var gameClock: CADisplayLink?
 var screenWidth = 370
 var screenHeight = 700
@@ -30,6 +31,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //gameView = GameView(frame: canvas.frame)
+        backgroundMusic()
         self.view.backgroundColor = UIColor.black
         self.navigationItem.setHidesBackButton(true, animated: false)
         
@@ -213,9 +215,28 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
             pewpew = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
 
-            guard let player = pewpew else { return }
+            guard let bkz = pewpew else { return }
+
+            bkz.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func backgroundMusic() {
+        guard let url = Bundle.main.url(forResource: "spaceSong", withExtension: "wav") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            background_music = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
+
+            guard let player = background_music else { return }
 
             player.play()
+            player.numberOfLoops = -1
 
         } catch let error {
             print(error.localizedDescription)
