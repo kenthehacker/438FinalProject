@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-class DiagEnemy:MovableObject{
+class DiagEnemy:MovableObject{ //Level 2 enemies
     
     var curLoc: CGPoint
     var health: Int = 100
@@ -17,10 +17,11 @@ class DiagEnemy:MovableObject{
     var image: UIImage
     var speed = CGFloat(2)
     var alive = true
-    required init(location: CGPoint, size: Int) {
+    
+    required init(location: CGPoint, size: Int) { //initialize lvl 2 enemies
         self.curLoc = location
         self.size = size
-        self.image = UIImage(named: "GalagaEnemy2")!
+        self.image = UIImage(named: "GalagaEnemy2")! //get image
         self.hitBound = CGRect(x: location.x, y: location.y, width: CGFloat(size), height: CGFloat(size))
     }
     func getX() -> CGFloat{
@@ -33,11 +34,11 @@ class DiagEnemy:MovableObject{
     func getY() -> CGFloat{
         return self.curLoc.y
     }
-    func getPoint() -> CGPoint{
+    func getPoint() -> CGPoint{ //get location
         return self.curLoc
     }
     
-    func updateLocation(newLoc: CGPoint) {
+    func updateLocation(newLoc: CGPoint) { //update the location and edit the speed of the enemy
         if self.curLoc.x<0{
             self.curLoc = CGPoint(x: 1, y: self.curLoc.y)
             self.speed = self.speed * -1
@@ -52,13 +53,13 @@ class DiagEnemy:MovableObject{
         self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     
-    func contains(point: CGPoint) -> Bool {
+    func contains(point: CGPoint) -> Bool { //check if a bullet hits the enemy
         let bound = CGRect(x:hitBound.minX, y: hitBound.minY, width: hitBound.width+20, height: hitBound.height+20)
         let bezPath = UIBezierPath(rect: bound)
         return bezPath.contains(point)
     }
     
-    func draw() {
+    func draw() { //prints image
         self.updateLocation(newLoc: curLoc)
         self.image.draw(in: hitBound)
     }

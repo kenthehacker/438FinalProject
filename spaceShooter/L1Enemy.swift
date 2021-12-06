@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-class L1Enemy: MovableObject{
+class L1Enemy: MovableObject{ // Level 1 enemy
     func isAlive() -> Bool {
         return self.alive
     }
@@ -22,11 +22,11 @@ class L1Enemy: MovableObject{
     var image: UIImage
     var stopMove = false
     
-    required init(location: CGPoint, size: Int) {
+    required init(location: CGPoint, size: Int) { //initialize the first level enemy
         self.curLoc = location
         self.size = size
-        self.image = UIImage(named: "GalagaEnemy3")!
-        self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
+        self.image = UIImage(named: "GalagaEnemy3")! //get sprite for printing image
+        self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size)) //hit reg
     }
     
     func getX() -> CGFloat {
@@ -37,9 +37,8 @@ class L1Enemy: MovableObject{
         return curLoc.y
     }
     
-    func updateLocation(newLoc: CGPoint) {
-        //TODO
-        //enemy should descend in a formation and descend based tick speed
+    func updateLocation(newLoc: CGPoint) { //get location based on tick count
+        
         if tick < 75 {
             curLoc = CGPoint(x: self.curLoc.x,y: self.curLoc.y+2)
         }else{
@@ -48,7 +47,7 @@ class L1Enemy: MovableObject{
         self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     
-    func contains(point: CGPoint) -> Bool {
+    func contains(point: CGPoint) -> Bool { // creation of the hit registration, when a bullet enters this enemy dies
         let bound = CGRect(x:hitBound.minX, y: hitBound.minY, width: hitBound.width, height: hitBound.height)
         let bezPath = UIBezierPath(rect: bound)
         let center = bezPath.contains(point)
@@ -67,7 +66,7 @@ class L1Enemy: MovableObject{
         return false
     }
     
-    func draw() {
+    func draw() { //draw image
         self.updateLocation(newLoc: self.curLoc)
         self.image.draw(in: hitBound)
         enemyBulletTicker = enemyBulletTicker + 1

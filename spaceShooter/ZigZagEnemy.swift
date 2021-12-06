@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-class ZigZagEnemy: MovableObject{
+class ZigZagEnemy: MovableObject{ //level 4 enemy
     
     var curLoc: CGPoint
     var health: Int = 100
@@ -17,10 +17,11 @@ class ZigZagEnemy: MovableObject{
     var image: UIImage
     var speed = CGFloat(6)
     var alive = true
-    required init(location: CGPoint, size: Int) {
+    
+    required init(location: CGPoint, size: Int) { //initialize enemy
         self.curLoc = location
         self.size = size
-        self.image = UIImage(named: "GalagaEnemy4")!
+        self.image = UIImage(named: "GalagaEnemy4")! //get image for enemy
         self.hitBound = CGRect(x: location.x, y: location.y, width: CGFloat(size), height: CGFloat(size))
     }
     
@@ -32,7 +33,7 @@ class ZigZagEnemy: MovableObject{
         return self.curLoc.y
     }
     
-    func updateLocation(newLoc: CGPoint) {
+    func updateLocation(newLoc: CGPoint) { //update the current location value for hitbox and image
         if Int(self.getX()) > screenWidth{ //if we hit the bounds then we flip direction
             self.speed = self.speed * -1
             self.curLoc = CGPoint(x: CGFloat(screenWidth) - CGFloat(5), y: curLoc.y) //we shift by 5 units to prevent the object from getting stuck
@@ -45,13 +46,13 @@ class ZigZagEnemy: MovableObject{
         self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     
-    func contains(point: CGPoint) -> Bool {
+    func contains(point: CGPoint) -> Bool { //create bezier path for hitbox
         let bound = CGRect(x:hitBound.minX, y: hitBound.minY, width: hitBound.width+20, height: hitBound.height+20)
         let bezPath = UIBezierPath(rect: bound)
         return bezPath.contains(point)
     }
     
-    func draw() {
+    func draw() { //draw image
         updateLocation(newLoc: curLoc)
         self.image.draw(in: hitBound)
     }
