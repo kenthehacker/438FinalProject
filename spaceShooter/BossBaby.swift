@@ -12,7 +12,7 @@ class BossBaby:MovableObject{
     func isAlive() -> Bool {
         return self.alive
     }
-    var health = 100
+    var health = 200
     var alive = true
     var curLoc: CGPoint
     var size: Int
