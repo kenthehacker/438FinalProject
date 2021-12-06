@@ -11,6 +11,7 @@ final class GameView: UIView{
     var mainCharacter = SpaceShip(location: CGPoint(x: 4, y: 4), size: 0)
     var numEnemy = 0
     var isAlive: [Bool] = []
+    var bossHealth = 100
     
     var upgrades: [UpgradeDrop] = []{
         didSet {

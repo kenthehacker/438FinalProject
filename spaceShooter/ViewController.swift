@@ -40,6 +40,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var enemySequence = [[Int]]()
     var pauseSpawn = false
     var updatingLevel = true
+    var isFightingBoss = false
+    
     
     var fastMode = false
     @IBOutlet weak var gameView: GameView!
@@ -237,7 +239,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                         
                     }
                     if i == 4{
-                        
+                        isFightingBoss = true
                         createBossBaby()
                         toggleShuriken = true
                         //boss baby
@@ -258,7 +260,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
                 if tempCount == 0 {
                     pauseSpawn = false
-                    //gameView.isAlive = []
                     localLevelTicker += 1
                     
                 }
