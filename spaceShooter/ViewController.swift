@@ -31,7 +31,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     //Level Specific Variables:
     var localLevelTicker = 0
     var numDiagsGenerated = 0
-    
+    var numEnemiesGenerated = 0
+    var numFormations = 0
+    var numZigZag = 0
+    var numDiag = 0
+    var numBoss = 0
+    var enemySequence = [[Int]]()
+    var pauseSpawn = true
+    var updatingLevel = true
     
     var fastMode = false
     @IBOutlet weak var gameView: GameView!
@@ -58,7 +65,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.mainCharacter = spaceShip
         
         //REMOVE THIS
-        createEnemyFormation()
+        //createEnemyFormation()
         
         //originally said start level1()
         // Do any additional setup after loading the view.
@@ -85,12 +92,48 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         else{
             if currentLevel == 1{
-                level1()
+                if updatingLevel{
+                    
+                    updatingLevel = false
+                    var seq = [Int]()
+                    seq.append(0)
+                    numEnemiesGenerated = numEnemiesGenerated + 15
+                    print(enemySequence)
+                }
+                infLevel()
             }
-            else if currentLevel == 2{
-                level2()
-            }else if currentLevel == 3{
-                level3()
+            else if currentLevel <= 4 {
+                if updatingLevel{
+                    updatingLevel = false
+                    fastMode = false
+                    let n = currentLevel+3
+                    for _ in 1...n{
+                        var seq = [Int]()
+                        for _ in 1...3{
+                            let random = Int.random(in: 1..<100)
+                            if random > 50{
+                                var zz = Int.random(in: 0..<3)
+                                if zz == 1 && seq.contains(0){
+                                    zz = 1
+                                }
+                                zz = 3
+                                seq.append(zz)
+                                if zz == 0{
+                                    numEnemiesGenerated = numEnemiesGenerated + 15
+                                }else{
+                                    numEnemiesGenerated = numEnemiesGenerated + 1
+                                }
+                            }
+                        }
+                        enemySequence.append(seq)
+                    }
+                    print(enemySequence)
+                    
+                }
+                infLevel()
+            }
+            else{
+                //boss baby
             }
             
             
@@ -98,36 +141,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     //all of the levels ->
-    
-    func level1(){
-        tick += 1
-        bulletTimer += 1
-        enemyBulletTimer += 1
-        addBullet()
-        shootBullets()
-        didGetHit()
-        //check if all of the enemy objects are gone
-        var counter = 0
-        for i in gameView.isAlive{
-            if i == true{
-                counter += 1
-                
-            }
-        }
-        //REMOVE THIS
-        currentLevel = currentLevel+1
-        if counter == 0{
-            
-            currentLevel = currentLevel+1
-        }
-        
-        gameView.setNeedsDisplay()
-        
-    }
-    func level2(){
-        
-        localLevelTicker += 1
-        
+    func infLevel(){
         tick += 1
         bulletTimer += 1
         enemyBulletTimer += 1
@@ -137,60 +151,57 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         shootBullets()
         didGetHit()
         
-        if localLevelTicker == 1000{
-            let rand = Int.random(in: 0..<100)
-            if rand > 80 && numDiagsGenerated <= 10{
-                numDiagsGenerated += 1
-                createDiagEnemy()
+        if !pauseSpawn{
+            if localLevelTicker < enemySequence.count{
+                let j = enemySequence[localLevelTicker]
+                for i in j{
+                    if i == 0{
+                        print("enemyFormation")
+                        createEnemyFormation()
+                    }
+                    if i == 1{
+                        createDiagEnemy()
+                        print("diagenemy")
+                    }
+                    if i == 2{
+                        createZigZagEnemy()
+                        print("zigzagEnemy")
+                    }
+                    if i == 3{
+                        //spin Enemy
+                        createSpinEnemy()
+                        print("spinenemy")
+                    }
+                    if i == 4{
+                        print("bossbaby")
+                        //boss baby
+                    }
+                }
+            }else{
+                numEnemiesGenerated = 0
             }
-            localLevelTicker = 0
-        }
-        
-        if levelStepCounter == 0{
-            createEnemyFormation()
-            createZigZagEnemy()
-            createDiagEnemy()
-            levelStepCounter += 1
-        }
-        var counter = 0
-        for i in gameView.isAlive{
-            if i == true{
-                counter += 1
-            }
-        }
-        if counter == 0{
-            levelStepCounter += 1
-        }
-        if levelStepCounter == 2{
-            levelStepCounter += 1
-            createDiagEnemy()
-        }
-        if gameView.scaledEnemies.count == 0{
-            levelStepCounter += 1
-        }
-        if levelStepCounter == 4{
-            levelStepCounter += 1
-            createZigZagEnemy()
-            createZigZagEnemy()
-            createDiagEnemy()
-            createEnemyFormation()
-        }
-        if levelStepCounter >= 5 && gameView.scaledEnemies.count == 0{
-            var tempCount = 0
-            for i in gameView.isAlive{
-                if i == true{
-                    tempCount += 1
+            pauseSpawn = true
+        }else{
+            if gameView.scaledEnemies.count == 0{
+                var tempCount = 0
+                for i in gameView.isAlive{
+                    if i == true{
+                        tempCount += 1
+                    }
+                }
+                if tempCount == 0 {
+                    pauseSpawn = false
+                    localLevelTicker += 1
                 }
             }
-            if tempCount == 0{
-                currentLevel += 1
-            }
         }
+        
+        if numEnemiesGenerated == 0{
+            currentLevel += 1
+            updatingLevel = true
+        }
+        
         gameView.setNeedsDisplay()
-        
-    }
-    func level3(){
-        
     }
     func levelBoss(){
         
@@ -291,6 +302,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let tempZigZag = ZigZagEnemy(location: spawnPoint, size: 30)
         gameView.scaledEnemies.append(tempZigZag)
     }
+    func createSpinEnemy(){
+        let randX = Int.random(in: 0..<screenWidth)
+        let spawnPoint = CGPoint(x: randX, y: 0)
+        let tempSpinEnemy = SpinningEnemy(location: spawnPoint, size: 0)
+        gameView.scaledEnemies.append(tempSpinEnemy)
+    }
+    func createBossBaby(){
+        let spawnPoint =  CGPoint(x: screenWidth/2, y: 10)
+        let tempBossBaby = BossBaby(location: spawnPoint, size: 50)
+        gameView.scaledEnemies.append(tempBossBaby)
+    }
     
     
     // referenced https://stackoverflow.com/questions/32036146/how-to-play-a-sound-using-swift
@@ -333,48 +355,51 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     
     func shootBullets() {
-        if enemyBulletTimer > 40{
-            enemyBulletTimer = 0
-        }
-        if enemyBulletTimer == 0{
-            //let locations = [55, 110, 165, 225, 280]
-            let random = Int.random(in: 0..<5)
-
-            var shootingEnemy = random
-            
-            switch random {
-            case 0:
-                if !gameView.isAlive[10] {
-                    return
-                }
-                shootingEnemy = getEnemyShooting(index: 0)
-            case 1:
-                if !gameView.isAlive[11] {
-                    return
-                }
-                shootingEnemy = getEnemyShooting(index: 1)
-            case 2:
-                if !gameView.isAlive[12] {
-                    return
-                }
-                shootingEnemy = getEnemyShooting(index: 2)
-            case 3:
-                if !gameView.isAlive[13] {
-                    return
-                }
-                shootingEnemy = getEnemyShooting(index: 3)
-            case 4:
-                if !gameView.isAlive[14] {
-                    return
-                }
-                shootingEnemy = getEnemyShooting(index: 4)
-            default:
-                return
+        if gameView.isAlive.count > 0{
+            if enemyBulletTimer > 40{
+                enemyBulletTimer = 0
             }
-            let location = CGPoint(x: (Int)(gameView.enemies[shootingEnemy].getX()), y: (Int)(gameView.enemies[shootingEnemy].getY()) + 40)
-            let enemy = EnemyBullet(location: location, size: 30)
-            gameView.enemyMagazine.append(enemy)
+            if enemyBulletTimer == 0{
+                //let locations = [55, 110, 165, 225, 280]
+                let random = Int.random(in: 0..<5)
+
+                var shootingEnemy = random
+                
+                switch random {
+                case 0:
+                    if !gameView.isAlive[10] {
+                        return
+                    }
+                    shootingEnemy = getEnemyShooting(index: 0)
+                case 1:
+                    if !gameView.isAlive[11] {
+                        return
+                    }
+                    shootingEnemy = getEnemyShooting(index: 1)
+                case 2:
+                    if !gameView.isAlive[12] {
+                        return
+                    }
+                    shootingEnemy = getEnemyShooting(index: 2)
+                case 3:
+                    if !gameView.isAlive[13] {
+                        return
+                    }
+                    shootingEnemy = getEnemyShooting(index: 3)
+                case 4:
+                    if !gameView.isAlive[14] {
+                        return
+                    }
+                    shootingEnemy = getEnemyShooting(index: 4)
+                default:
+                    return
+                }
+                let location = CGPoint(x: (Int)(gameView.enemies[shootingEnemy].getX()), y: (Int)(gameView.enemies[shootingEnemy].getY()) + 40)
+                let enemy = EnemyBullet(location: location, size: 30)
+                gameView.enemyMagazine.append(enemy)
+            }
         }
+        
     }
     
     func getEnemyShooting(index:Int) -> Int {
@@ -396,6 +421,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         for bullet in gameView.items{
             let temp = CGPoint(x: bullet.getX(), y: bullet.getY())
             gameView.scaledCheckKillEnemy(loc: temp)
+            numEnemiesGenerated -= 1
         }
     }
     
@@ -409,6 +435,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                     if Int.random(in: 1..<100) >= 90{
                         gameView.upgrades.append(UpgradeDrop(location: CGPoint(x: bullet.getX() + 10, y: bullet.getY()), size: 30))
                     }
+                    
+                    numEnemiesGenerated -= 1
                     
                     gameView.isAlive[enemyNumber] = false
                     gameView.items.remove(at: bulletNumber)
@@ -433,9 +461,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         for i in gameView.upgrades{
             if gameView.mainCharacter.contains(point: i.curLoc){
-                
-            //if i.contains(point: gameView.mainCharacter.getPoint()){
-                print("FFFF")
                 if i.upgrade == .healthBoost{
                     gameView.mainCharacter.healthBoost(n: 10)
                 }
