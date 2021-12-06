@@ -17,12 +17,14 @@ class BossBaby:MovableObject{
     var curLoc: CGPoint
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.yellow
+    var col = UIColor.clear
+    var image: UIImage
     var speed = CGFloat(10)
     var stopMove = false
     required init(location: CGPoint, size: Int) {
         self.curLoc = location
         self.size = size
+        self.image = UIImage(named: "GalagaBoss")
         let cgSize = CGFloat(self.size)
         self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
     }
@@ -54,6 +56,7 @@ class BossBaby:MovableObject{
     func draw(){
         col.setFill()
         self.updateLocation(newLoc: self.curLoc)
+        self.image.draw(in: hitBound)
         let bezPath = UIBezierPath(rect: self.hitBound)
         bezPath.fill()
         
