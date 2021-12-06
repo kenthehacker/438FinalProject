@@ -92,22 +92,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         else{
             if currentLevel == 1{
+                fastMode = true
                 if updatingLevel{
-                    
                     updatingLevel = false
                     var seq = [Int]()
                     seq.append(0)
-                    numEnemiesGenerated = numEnemiesGenerated + 15
+                    numEnemiesGenerated = 15
                     enemySequence.append(seq)
                     print("level1")
-                    
                 }
                 infLevel()
             }
             else if currentLevel <= 4 {
                 if updatingLevel{
+                    
+                    localLevelTicker = 0
                     updatingLevel = false
                     fastMode = false
+                    
+                    fastMode = true
                     let n = currentLevel+3
                     for _ in 1...n{
                         var seq = [Int]()
@@ -126,9 +129,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                                 }
                             }
                         }
+                        if seq.count == 0{
+                            seq.append(Int.random(in: 0..<3))
+                        }
                         enemySequence.append(seq)
                     }
                     print("level "+String(currentLevel))
+                    print(enemySequence)
                     
                     
                 }
@@ -156,10 +163,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if !pauseSpawn{
             if localLevelTicker < enemySequence.count{
+                print("LocalLev"+String(localLevelTicker))
                 let j = enemySequence[localLevelTicker]
                 for i in j{
                     if i == 0{
                         print("enemyFormation")
+                        //gameView.isAlive = []
+                        //gameView.enemies = []
                         createEnemyFormation()
                     }
                     if i == 1{
@@ -195,8 +205,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
                 if tempCount == 0 {
                     pauseSpawn = false
+                    //gameView.isAlive = []
                     localLevelTicker += 1
+                    print("moved localLevelTicker "+String(localLevelTicker))
                 }
+                //print("temp count "+String(tempCount))
             }
         }
         
@@ -283,6 +296,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     //revert the changes
     func createEnemyFormation() {
+        tick = 0
+        gameView.enemies = []
+        gameView.numEnemy = 0
         let x_loc = [55, 110, 165, 225, 280]
         let y_loc = [-20, -60, -100]
         for j in 0..<3 {
@@ -482,4 +498,5 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
 
 }
+
 
