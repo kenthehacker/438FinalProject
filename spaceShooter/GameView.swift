@@ -22,6 +22,11 @@ final class GameView: UIView{
             setNeedsDisplay()
         }
     }
+    var bossMagazine: [ShurikenBullet] = []{
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     var items: [MovableObject] = [] {
         didSet {
             setNeedsDisplay()
@@ -126,6 +131,16 @@ final class GameView: UIView{
                 upgrades.remove(at: i)
                 i = i - 1
             }
+            i = i+1
+        }
+        i = 0
+        while i < bossMagazine.count{
+            bossMagazine[i].draw()
+            if bossMagazine[i].getY() > 750{
+                bossMagazine.remove(at: i)
+                i = i - 1
+            }
+            
             i = i+1
         }
         self.mainCharacter.draw()

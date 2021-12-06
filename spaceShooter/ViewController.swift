@@ -96,8 +96,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if updatingLevel{
                     updatingLevel = false
                     var seq = [Int]()
-                    seq.append(0)
-                    numEnemiesGenerated = 15
+                    seq.append(4)
+                    numEnemiesGenerated = 1
                     enemySequence.append(seq)
                     print("level1")
                 }
@@ -159,7 +159,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         addBullet()
         scaledShootBullets()
         scaledDidGetHit()
-        shootBullets()
+        //shootBullets()
+        shurikenBullet()
         didGetHit()
         
         if !pauseSpawn{
@@ -188,6 +189,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                     }
                     if i == 4{
                         print("bossbaby")
+                        createBossBaby()
                         //boss baby
                     }
                 }
@@ -233,9 +235,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         didGetHit()
         
     }
-    func level666(){
-        
-    }
     func scaledShootBullets(){
         scaledEnemyBulletTimer = scaledEnemyBulletTimer+1
         if scaledEnemyBulletTimer > 40{
@@ -244,7 +243,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         if scaledEnemyBulletTimer == 0{
             for i in gameView.scaledEnemies{
                 let random = Int.random(in: 0..<100)
-                if random > 0{
+                if random > 50{
                     let loc = CGPoint(x: i.getX(), y: i.getY())
                     let bullet = EnemyBullet(location: loc, size: 40)
                     gameView.enemyMagazine.append(bullet)
@@ -253,7 +252,30 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
     }
-    
+    func shurikenBullet(){
+        scaledEnemyBulletTimer = scaledEnemyBulletTimer+1
+        if scaledEnemyBulletTimer > 30{
+            scaledEnemyBulletTimer = 0
+        }
+        if scaledEnemyBulletTimer == 0{
+            for i in gameView.scaledEnemies{
+                let random = Int.random(in: 0..<100)
+                if random > 76{
+                    let loc = CGPoint(x: i.getX()+CGFloat(43), y: i.getY()+CGFloat(17))
+                    var theta = 0.0
+                    while theta < Double.pi * 2{
+                        theta = Double.pi/7 + theta
+                        let speedX = 5.0*cos(theta)
+                        let speedY = 5.0*sin(theta)
+                        let bullet = ShurikenBullet(location: loc, size: 15)
+                        bullet.setSpeedX(n: CGFloat(speedX))
+                        bullet.setSpeedY(n: CGFloat(speedY))
+                        gameView.bossMagazine.append(bullet)
+                    }
+                }
+            }
+        }
+    }
     //<- all of the levels
     
     
@@ -340,7 +362,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     func createBossBaby(){
         let spawnPoint =  CGPoint(x: screenWidth/2, y: 10)
-        let tempBossBaby = BossBaby(location: spawnPoint, size: 50)
+        let tempBossBaby = BossBaby(location: spawnPoint, size: 100)
         gameView.scaledEnemies.append(tempBossBaby)
     }
     
@@ -488,6 +510,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 //print("player hit, \(gameView.mainCharacter.health)")
                 break
             }
+        }
+        
+        for (index, bb) in gameView.bossMagazine.enumerated(){
+            if bb.contains(point: gameView.mainCharacter.getPoint()){
+                let isAlive = gameView.mainCharacter.takeDamage(hp: 20)
+                gameView.bossMagazine.remove(at: index)
+                //print("player hit, \(gameView.mainCharacter.health)")
+                break
+            }
+            
         }
         
         for i in gameView.upgrades{
