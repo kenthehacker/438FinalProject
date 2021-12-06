@@ -18,8 +18,6 @@ class LaunchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         play_button.tintColor = UIColor.white
         leaderboard_button.tintColor = UIColor.white
         self.navigationItem.setHidesBackButton(true, animated: false)

@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+
+/// Draws the shooting star background
 class ShootingStar: MovableObject{
     
     let speed = 5
@@ -32,6 +34,7 @@ class ShootingStar: MovableObject{
         return curLoc.y
     }
     
+    /// Updates location of the stars
     func updateLocation(newLoc: CGPoint) {
         self.curLoc = CGPoint(x: self.curLoc.x,y: self.curLoc.y+CGFloat(speed))
         self.star = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(width), height: CGFloat(height))
@@ -41,6 +44,7 @@ class ShootingStar: MovableObject{
         return true
     }
     
+    /// Draws the stars using bezier paths
     func draw(){
         self.updateLocation(newLoc: curLoc)
         let colorWithAlpha = UIColor.white.withAlphaComponent(self.colFloat)
@@ -48,10 +52,12 @@ class ShootingStar: MovableObject{
         let bezPath = UIBezierPath(rect: self.star)
         bezPath.fill()
     }
+    
     func getHealth() -> Int {
+        // do nothing
         return 0
     }
     func getDMG(){
-        
+        // do nothing
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Manages upgrade drops
 class UpgradeDrop: MovableObject{
     var curLoc: CGPoint
     var size: Int
@@ -16,7 +17,7 @@ class UpgradeDrop: MovableObject{
     var image: UIImage
     let speed = CGFloat(5)
     
-    
+    /// Types of different upgrade drops
     enum upgradeType: CaseIterable {
         case healthBoost
         case fasterFire
@@ -45,26 +46,31 @@ class UpgradeDrop: MovableObject{
         return curLoc.y
     }
     
+    /// Updates location for the upgrade drop
     func updateLocation(newLoc: CGPoint) {
         curLoc = CGPoint(x: self.curLoc.x,y: self.curLoc.y+speed)
         self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     
+    /// Determines if point is inside the upgrade drop
     func contains(point: CGPoint) -> Bool {
         let tempBound = CGRect(x:hitBound.minX-10, y: hitBound.minY-10, width: hitBound.width+20, height: hitBound.height+20)
         let bezPath = UIBezierPath(rect: tempBound)
         return bezPath.contains(point)
     }
     
+    /// Draws the drop
     func draw() {
         self.updateLocation(newLoc: curLoc)
         self.image.draw(in: hitBound)
     }
+    
     func getHealth() -> Int {
+        // do nothing
         return 0
     }
     func getDMG(){
-        
+        // do nothing
     }
     
 }

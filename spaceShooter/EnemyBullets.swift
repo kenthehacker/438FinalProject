@@ -9,6 +9,7 @@ import Foundation
 
 import UIKit
 
+/// Class for enemy bullet functionality
 class EnemyBullet: MovableObject{
     var curLoc: CGPoint
     var size: Int
@@ -27,9 +28,7 @@ class EnemyBullet: MovableObject{
     func isAlive() -> Bool {
         return true
     }
-    func setNewDamage(n: Int){
-        self.healthDamage = n
-    }
+    
     func getDamage() -> Int{
         return self.healthDamage
     }
@@ -39,23 +38,37 @@ class EnemyBullet: MovableObject{
     func getY() -> CGFloat{
         return curLoc.y
     }
+    
+    /// Sets a new damage amount for the bullet
+    func setNewDamage(n: Int){
+        self.healthDamage = n
+    }
+    
+    /// Updates location of the enemy bullet
     func updateLocation(newLoc: CGPoint){
         curLoc = CGPoint(x: self.curLoc.x,y: self.curLoc.y+speed)
         self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
+    
+    /// Determines if a point is inside an enemy bullet
     func contains(point: CGPoint) -> Bool{
         let bound = CGRect(x:hitBound.minX-10, y: hitBound.minY-10, width: hitBound.width+20, height: hitBound.height+20)
         let bezPath = UIBezierPath(rect: bound)
         return bezPath.contains(point)
     }
+    
+    /// Draws bullet
     func draw(){
         self.image.draw(in: hitBound)
         self.updateLocation(newLoc: self.curLoc)
     }
+    
     func getHealth() -> Int {
+        // do nothing
         return 0
     }
+    
     func getDMG(){
-        
+        // do nothing
     }
 }

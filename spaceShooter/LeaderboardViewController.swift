@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import CoreLocation
 
+/// Class for leaderboard viewcontroller
 class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var score: Int = 0
@@ -69,6 +70,8 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
                     leaderboardArr.append(LeaderboardObjects(username: values.key, score: score.value! as! Int, region: loc.value! as! String))
                 }
             }
+            
+            // Sorts by score in descending order
             leaderboardArr.sort {
                 $0.score > $1.score
             }
