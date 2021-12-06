@@ -28,12 +28,6 @@ class SpinningEnemy:MovableObject{
         self.hitBound = CGRect(x: location.x, y: location.y, width: CGFloat(size), height: CGFloat(size))
     }
     
-//    init(location: CGPoint, size: Int, radius: Int){
-//        self.curLoc = location
-//        self.size = size
-//        self.radius = radius
-//    }
-    
     func getX() -> CGFloat {
         return self.curLoc.x
     }
@@ -47,10 +41,8 @@ class SpinningEnemy:MovableObject{
     
     func updateLocation(newLoc: CGPoint) {
         theta = theta + Double.pi/Double(rotSpeed)
-        let newX = self.centre.x + 1.3*Double(self.radius) * cos(theta)
+        let newX = self.centre.x + 1.5*Double(self.radius) * cos(theta)
         let newY = self.centre.y + Double(self.radius) * sin(theta)
-        //let newX = Double(self.curLoc.x) + Double(self.radius)*cos(Double(speed)*Double.pi / 180.0)
-        //let newY = Double(self.curLoc.y) + Double(self.radius)*sin(Double(speed)*Double.pi / 180.0)
         curLoc = CGPoint(x: newX, y: newY)
         self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }

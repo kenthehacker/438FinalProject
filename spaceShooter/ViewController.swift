@@ -223,6 +223,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.setNeedsDisplay()
     }
     func levelBoss(){
+        tick += 1
+        bulletTimer += 1
+        enemyBulletTimer += 1
+        addBullet()
+        scaledShootBullets()
+        scaledDidGetHit()
+        shootBullets()
+        didGetHit()
         
     }
     func level666(){
@@ -238,7 +246,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 let random = Int.random(in: 0..<100)
                 if random > 0{
                     let loc = CGPoint(x: i.getX(), y: i.getY())
-                    let bullet = EnemyBullet(location: loc, size: 20)
+                    let bullet = EnemyBullet(location: loc, size: 40)
                     gameView.enemyMagazine.append(bullet)
                 }
             }

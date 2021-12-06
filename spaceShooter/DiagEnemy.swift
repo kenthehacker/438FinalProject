@@ -38,7 +38,16 @@ class DiagEnemy:MovableObject{
     }
     
     func updateLocation(newLoc: CGPoint) {
+        if self.curLoc.x<0{
+            self.curLoc = CGPoint(x: 1, y: self.curLoc.y)
+            self.speed = self.speed * -1
+        }
+        if self.curLoc.x > CGFloat(screenWidth){
+            self.curLoc = CGPoint(x: CGFloat(screenWidth-5), y: self.curLoc.y)
+            self.speed = self.speed * -1
+        }
         self.curLoc = CGPoint(x: self.curLoc.x - self.speed, y: self.curLoc.y+self.speed)
+        
         //moves enemy object in diagonal
         self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
