@@ -8,12 +8,13 @@
 import UIKit
 import AVFoundation
 
+//following are global variables that needs to be accessed by other files and classes
 var pewpew: AVAudioPlayer?
 var background_music: AVAudioPlayer?
 var gameClock: CADisplayLink?
-var screenWidth = 370
+var screenWidth = 370 //theoretical height and width of the screen
 var screenHeight = 700
-var tick = 0
+var tick = 0 //tick controls how often bullets are being fired
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var currentLevel = 1
     
@@ -29,14 +30,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var levelStepCounter = 0
     
     //Level Specific Variables:
+    //all of the following specific variables are constantly being updated
     var localLevelTicker = 0
     var toggleShuriken = false
     var numDiagsGenerated = 0
     var numEnemiesGenerated = 0
     var numFormations = 0
-    var numZigZag = 0
-    var numDiag = 0
-    var numBoss = 0
+    
     var enemySequence = [[Int]]()
     var pauseSpawn = false
     var updatingLevel = true
@@ -51,7 +51,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         //gameView = GameView(frame: canvas.frame)
         backgroundMusic()
-        self.view.backgroundColor = UIColor.black
+        self.view.backgroundColor = UIColor.black   //sets black for the black background for the shooting star
+                                                    // moving background
         self.navigationItem.setHidesBackButton(true, animated: false)
         
         let textAtt = [NSAttributedString.Key.foregroundColor:UIColor.red, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24)]
@@ -59,10 +60,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationItem.title = "\(score)"
         
         gameClock = CADisplayLink(target: self, selector: #selector(update))
+                                                    //allows for the ticker to increment up
+                                                    //logic is used to display how quickly our Level1 and Boss enemy descends
         gameClock?.add(to: .current, forMode: .common)
         
-        let meap = CGPoint(x: 50, y: 700)
-        let spaceShip = SpaceShip(location: meap, size: 30)
+        let tempLocationOfShip = CGPoint(x: 50, y: 700)     //initialises our ship and its location
+        let spaceShip = SpaceShip(location: tempLocationOfShip, size: 30)
 
         let imageName = "SpaceShipGraphic"
         let image = UIImage(named: imageName)
@@ -98,21 +101,32 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         else if !playerIsAlive && currentLevel == 666{
             //TODO: put on the leaderboard screen
-            gameView.clearScreen()
+            gameView.clearScreen()                          //checks if the game is still playing otherwise go into
+                                                            //leaderboard
             gameClock?.remove(from: .current, forMode: .common)
             let gameOverVC = storyboard!.instantiateViewController(withIdentifier: "GameOver") as! GameOver
             gameOverVC.displayScore = score
             navigationController?.pushViewController(gameOverVC, animated: true)
         }
         else{
-            if currentLevel == 1{
+            if currentLevel == 1{   //runs if the game is over
                 fastMode = false
                 if updatingLevel{
                     updatingLevel = false
                     var seq = [Int]()
-                    seq.append(0)
+                    seq.append(0)   //for level1 we add the 0-type enemy into the subarray
                     numEnemiesGenerated = 15
-                    enemySequence.append(seq)
+                    enemySequence.append(seq)   //then we append that subarray into our enemy sequence
+                    
+                    //how the game enemies are loaded:
+                    /*
+                     it is a 2 dimensional LinkedList; each inner array is a 'sub-wave' of enemies
+                     each enemies inside of a subwave is generated concurrently
+                     the enemies in different subwaves are not
+                     the entire linkedlist is considered to be a single wave or level
+                     
+                     with increasing levels the difficulty will rise
+                     */
                     
                 }
                 infLevel()
@@ -120,30 +134,32 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             else if currentLevel <= 2 {
                 if updatingLevel{
                     numEnemiesGenerated = 0
-                    enemySequence = []
+                    enemySequence = []  //clears enemy sequence and other necessary variables
                     localLevelTicker = 0
                     updatingLevel = false
-                    fastMode = false
+                    fastMode = false    //fast shoot powerup off
                     let n = currentLevel+3
                     for _ in 1...n{ //n
                         var seq = [Int]()
                         let enemyNumber = 3+currentLevel-2
-                        for _ in 1...enemyNumber{
+                        for _ in 1...enemyNumber{       //controls numbr of enemies based on diffuclty
                             let random = Int.random(in: 1..<100)
                             if random > 50{
                                 var zz = Int.random(in: 0..<4)
-                                if zz == 0 && seq.contains(0){
+                                if zz == 0 && seq.contains(0){      //we only want one instance of the 0-type enemy
                                     zz = 1
                                 }
                                 seq.append(zz)
                                 if zz == 0{
-                                    numEnemiesGenerated = numEnemiesGenerated + 15
+                                    numEnemiesGenerated = numEnemiesGenerated + 15  //keeps track of number of
+                                                                                    //enemies we have left to kill
                                 }else{
                                     numEnemiesGenerated = numEnemiesGenerated + 1
                                 }
                             }
                         }
-                        if seq.count == 0{
+                        if seq.count == 0{                                  //if we didnt add enemy we brute force
+                                                                            //add a random one
                             let tempVar = Int.random(in: 0..<3)
                             seq.append(tempVar)
                             if tempVar == 0{
@@ -161,7 +177,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
                 infLevel()
             }
-            else{
+            else{                           //while it looks like a replica of the above, the difference is
+                                            //we can add the boss baby class, and different bullet types
                 if updatingLevel{
                     enemySequence = []
                     localLevelTicker = 0
@@ -215,8 +232,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     //all of the levels ->
-    func infLevel(){
-        
+    func infLevel(){                //the beauty of this method is that we can have infinite levels and we do
+                                    //the parametres of what enemies to have is based off of the difficulty
         tick += 1
         bulletTimer += 1
         enemyBulletTimer += 1
@@ -233,7 +250,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             if localLevelTicker < enemySequence.count{
                 
                 let j = enemySequence[localLevelTicker]
-                for i in j{
+                for i in j{                     //we know what enemy to generated from our sequence
                     if i == 0{
                         createEnemyFormation()
                     }
@@ -287,7 +304,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.setNeedsDisplay()
     }
 
-    func scaledShootBullets(){
+    func scaledShootBullets(){                              //generates bullets from the scalable enemies
         scaledEnemyBulletTimer = scaledEnemyBulletTimer+1
         if scaledEnemyBulletTimer > 40{
             scaledEnemyBulletTimer = 0
@@ -304,7 +321,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
     }
-    func shurikenBullet(){
+    func shurikenBullet(){                              //shoots bullets in a shuriken formation
         scaledEnemyBulletTimer = scaledEnemyBulletTimer+1
         if scaledEnemyBulletTimer > 30{
             scaledEnemyBulletTimer = 0
@@ -315,7 +332,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if random > 76{
                     let loc = CGPoint(x: i.getX()+CGFloat(43), y: i.getY()+CGFloat(17))
                     var theta = 0.0
-                    while theta < Double.pi * 2{
+                    while theta < Double.pi * 2{        //we go around in a circle and generate bullets
                         theta = Double.pi/7 + theta
                         let speedX = 5.0*cos(theta)
                         let speedY = 5.0*sin(theta)
@@ -355,9 +372,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         beganTouchyTouchy = false
     }
     
-    func addBullet(){
+    func addBullet(){                       //adds bullet in front of the sprite that we are talking about
         if fastMode{
-            if bulletTimer > 10 && isPlaying{
+            if bulletTimer > 10 && isPlaying{   //adds bullet based on time
                 bulletTimer = 0
                 let tempLocation = CGPoint(x: gameView.mainCharacter.getX() - 10, y: 690)
                 let tempBullet = Bullet(location: tempLocation, size: 20)
@@ -377,7 +394,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    //revert the changes
+    //following enemy creation methods generates a single enemy other than the enemy formation which creates
+    // an nxm matrix of enemies
     func createEnemyFormation() {
         tick = 0
         gameView.enemies = []
@@ -457,7 +475,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    
+    //shoots bullets for enemies in formation
     func shootBullets() {
         if gameView.isAlive.count > 0{
             if enemyBulletTimer > 40{
@@ -469,7 +487,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
                 var shootingEnemy = random
                 
-                switch random {
+                switch random {     //the following is specific for the enemy formation
+                                    //it picks a random enemy to fire from
+                                    //we dont want the bullets to be fired from the rear enemies in the formation
+                                    //so we pick one from the front rows
                 case 0:
                     if !gameView.isAlive[10] {
                         return
@@ -521,16 +542,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         return shootingEnemy
     }
-    
+    //for the rest of the enemies we check if our enemy got hit
     func scaledDidGetHit(){
         for bullet in gameView.items{
             let temp = CGPoint(x: bullet.getX(), y: bullet.getY())
-            let t = gameView.scaledCheckKillEnemy(loc: temp)
+            let t = gameView.scaledCheckKillEnemy(loc: temp)    //important method to taking out health values from boss enemy
             numEnemiesGenerated -= t
             
         }
     }
-    
+    //following method checks if our enemies got hit by our bullet for the l1 enemy class
     func didGetHit(){
         var enemyNumber = 0
         for enemy in gameView.enemies{
@@ -554,7 +575,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             enemyNumber += 1
         }
-        
+        //determiens how our main character gets damaged
+        //also important to taking out the health image icons from bottom right corner of the screen
         for (index, enemyBullet) in gameView.enemyMagazine.enumerated(){
             if enemyBullet.contains(point: gameView.mainCharacter.getPoint()){
                 let isAlive = gameView.mainCharacter.takeDamage(hp: enemyBullet.getDamage())
@@ -593,7 +615,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             
         }
-        
+        //following helps us gets us the png health indicator on the bottom right corner of the screen
+        //to rise in value when we collect the powerups
         for i in gameView.upgrades{
             if gameView.mainCharacter.contains(point: i.curLoc){
                 if i.upgrade == .healthBoost{

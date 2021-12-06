@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 protocol MovableObject {
+    //defines methods for movable object protocol
+    //everything that moves is an extension of this protocol
     init(location: CGPoint, size: Int)
     func getX() -> CGFloat
     func getY() -> CGFloat

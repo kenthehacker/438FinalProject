@@ -12,7 +12,9 @@ final class GameView: UIView{
     var numEnemy = 0
     var isAlive: [Bool] = []
     var bossHealth = 100
-    
+    //following arrays contains all of the movable objects
+    //we seperated some into different arrays because they have different methods that
+    //cant necessarily be accessed all of the same time
     var upgrades: [UpgradeDrop] = []{
         didSet {
             setNeedsDisplay()
@@ -52,10 +54,7 @@ final class GameView: UIView{
     
     
     
-    func drawSpace(){
-        //self.mainCharacter.draw()
-    }
-    
+    //generates the shooting star formation
     func drawStars(){
         var i = 0
         while stars.count < 50{
@@ -70,6 +69,7 @@ final class GameView: UIView{
             i = i + 1
         }
     }
+    //generates all of the enemy objects
     func drawEnemies() {
         var i = 0
         while i < enemies.count{
@@ -91,6 +91,7 @@ final class GameView: UIView{
         }
         
     }
+    //checks if the enemy got killed or if its health is decreased
     func scaledCheckKillEnemy(loc: CGPoint) -> Int{
         var i = 0
         var counter = 0
@@ -164,7 +165,7 @@ final class GameView: UIView{
     func enemyIsInFront(index: Int) {
         
     }
-    
+    //creates sprite over spaceship
     func overlaySpaceShip() {
         if let image = UIImage(named: "SpaceShipGraphic") {
             let imageView = UIImageView(image: image)
