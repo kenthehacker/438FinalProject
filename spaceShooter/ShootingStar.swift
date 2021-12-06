@@ -48,4 +48,10 @@ class ShootingStar: MovableObject{
         let bezPath = UIBezierPath(rect: self.star)
         bezPath.fill()
     }
+    func getHealth() -> Int {
+        return 0
+    }
+    func getDMG(){
+        
+    }
 }

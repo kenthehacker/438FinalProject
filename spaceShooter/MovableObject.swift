@@ -16,4 +16,6 @@ protocol MovableObject {
     func contains(point: CGPoint) -> Bool
     func draw()
     func isAlive() -> Bool
+    func getHealth() -> Int
+    func getDMG()
 }

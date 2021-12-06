@@ -48,6 +48,12 @@ class Bullet: MovableObject{
     func isAlive() -> Bool {
         return true
     }
+    func getHealth() -> Int {
+        return 0
+    }
+    func getDMG(){
+        
+    }
     
 }
 

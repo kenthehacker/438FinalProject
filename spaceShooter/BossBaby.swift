@@ -60,6 +60,11 @@ class BossBaby:MovableObject{
     func takeDamage(n: Int){
         self.health = self.health - n
     }
-    
+    func getHealth() -> Int {
+        return self.health
+    }
+    func getDMG(){
+        self.health = self.health - 10
+    }
 }
 

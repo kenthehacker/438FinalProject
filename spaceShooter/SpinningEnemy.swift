@@ -62,7 +62,12 @@ class SpinningEnemy:MovableObject{
         return self.alive
     }
     
-    
+    func getHealth() -> Int {
+        return 0
+    }
+    func getDMG(){
+        
+    }
 }
 
 

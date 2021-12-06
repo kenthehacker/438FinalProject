@@ -72,7 +72,12 @@ class L1Enemy: MovableObject{
         self.image.draw(in: hitBound)
         enemyBulletTicker = enemyBulletTicker + 1
     }
-    
+    func getHealth() -> Int {
+        return 0
+    }
+    func getDMG(){
+        
+    }
     
 }
 

@@ -96,14 +96,18 @@ final class GameView: UIView{
         var counter = 0
         while i < scaledEnemies.count{
             if scaledEnemies[i].contains(point: loc){
-                scaledEnemies.remove(at: i)
-                i = i-1
-                counter += 1
+                scaledEnemies[i].getDMG()
+                if scaledEnemies[i].getHealth() <= 0{
+                    scaledEnemies.remove(at: i)
+                    i = i-1
+                    counter += 1
+                }
             }
             i += 1
         }
         return counter
     }
+    
     override func draw(_ rect: CGRect) {
         var i = 0
         while i < items.count{

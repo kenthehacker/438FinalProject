@@ -52,4 +52,10 @@ class EnemyBullet: MovableObject{
         self.image.draw(in: hitBound)
         self.updateLocation(newLoc: self.curLoc)
     }
+    func getHealth() -> Int {
+        return 0
+    }
+    func getDMG(){
+        
+    }
 }

@@ -63,5 +63,10 @@ class DiagEnemy:MovableObject{
         self.image.draw(in: hitBound)
     }
     
-    
+    func getHealth() -> Int {
+        return 0
+    }
+    func getDMG(){
+        
+    }
 }

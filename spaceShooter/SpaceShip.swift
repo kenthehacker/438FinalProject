@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 class SpaceShip: MovableObject{
+    func getHealth() -> Int {
+        return self.health
+    }
+    
     var curLoc: CGPoint
     var health: Int
     var size: Int
@@ -69,6 +73,9 @@ class SpaceShip: MovableObject{
         if self.health > 30{
             self.health = 30
         }
+    }
+    func getDMG(){
+        
     }
     
 }

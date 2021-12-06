@@ -60,7 +60,12 @@ class UpgradeDrop: MovableObject{
         self.updateLocation(newLoc: curLoc)
         self.image.draw(in: hitBound)
     }
-    
+    func getHealth() -> Int {
+        return 0
+    }
+    func getDMG(){
+        
+    }
     
 }
 
