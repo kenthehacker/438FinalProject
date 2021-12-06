@@ -47,10 +47,7 @@ class SpinningEnemy:MovableObject{
     
     func updateLocation(newLoc: CGPoint) {
         theta = theta + Double.pi/Double(rotSpeed)
-        if theta > 2*Double.pi{
-            theta = 0
-        }
-        let newX = self.centre.x + Double(self.radius) * cos(theta)
+        let newX = self.centre.x + 1.3*Double(self.radius) * cos(theta)
         let newY = self.centre.y + Double(self.radius) * sin(theta)
         //let newX = Double(self.curLoc.x) + Double(self.radius)*cos(Double(speed)*Double.pi / 180.0)
         //let newY = Double(self.curLoc.y) + Double(self.radius)*sin(Double(speed)*Double.pi / 180.0)
@@ -65,7 +62,6 @@ class SpinningEnemy:MovableObject{
     }
     func draw() {
         col.setFill()
-        print(self.curLoc)
         self.updateLocation(newLoc: curLoc)
         self.image.draw(in: hitBound)
         let bezPath = UIBezierPath(rect: self.hitBound)

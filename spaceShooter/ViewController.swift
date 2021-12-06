@@ -96,9 +96,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if updatingLevel{
                     updatingLevel = false
                     var seq = [Int]()
-                    seq.append(3)
-                    //numEnemiesGenerated = 15
-                    numEnemiesGenerated = 1
+                    seq.append(0)
+                    numEnemiesGenerated = 15
                     enemySequence.append(seq)
                     print("level1")
                 }
@@ -115,10 +114,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                     let n = currentLevel+3
                     for _ in 1...n{
                         var seq = [Int]()
-                        for _ in 1...3{
+                        let enemyNumber = 3+currentLevel-2
+                        for _ in 1...enemyNumber{
                             let random = Int.random(in: 1..<100)
                             if random > 50{
-                                var zz = Int.random(in: 0..<3)
+                                var zz = Int.random(in: 0..<4)
                                 if zz == 0 && seq.contains(0){
                                     zz = 1
                                 }
@@ -325,8 +325,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.scaledEnemies.append(tempZigZag)
     }
     func createSpinEnemy(){
-        //let randX = Int.random(in: 20..<screenWidth-20)
-        let randX = screenWidth/2
+        let randX = Int.random(in: 20..<screenWidth-30)
         let spawnPoint = CGPoint(x: randX, y: 60)
         let tempSpinEnemy = SpinningEnemy(location: spawnPoint, size: 20)
         gameView.scaledEnemies.append(tempSpinEnemy)
