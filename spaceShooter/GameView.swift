@@ -85,16 +85,18 @@ final class GameView: UIView{
         }
         
     }
-    func scaledCheckKillEnemy(loc: CGPoint){
+    func scaledCheckKillEnemy(loc: CGPoint) -> Int{
         var i = 0
-
+        var counter = 0
         while i < scaledEnemies.count{
             if scaledEnemies[i].contains(point: loc){
                 scaledEnemies.remove(at: i)
                 i = i-1
+                counter += 1
             }
             i += 1
         }
+        return counter
     }
     override func draw(_ rect: CGRect) {
         var i = 0
