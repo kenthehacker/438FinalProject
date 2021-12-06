@@ -14,7 +14,7 @@ class SpaceShip: MovableObject{
     var hitBound: CGRect
     var col = UIColor.clear
     required init(location: CGPoint, size:Int){
-        self.health = 100
+        self.health = 30
         self.curLoc = location
         self.size = size
         let cgSize = CGFloat(self.size)
@@ -66,8 +66,8 @@ class SpaceShip: MovableObject{
     }
     func healthBoost(n: Int){                   //if we got the superhealth boost we'll just increment health by 100
         self.health = self.health + 10
-        if self.health > 100{
-            self.health = 100
+        if self.health > 30{
+            self.health = 30
         }
     }
     

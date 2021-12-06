@@ -556,7 +556,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         for (index, bb) in gameView.bossMagazine.enumerated(){
             if bb.contains(point: gameView.mainCharacter.getPoint()){
-                let isAlive = gameView.mainCharacter.takeDamage(hp: 20)
+                let isAlive = gameView.mainCharacter.takeDamage(hp: 10)
                 gameView.bossMagazine.remove(at: index)
                 
                 break
@@ -571,9 +571,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
                 else if i.upgrade == .fasterFire{
                     fastMode = true
-                }
-                else{
-                    gameView.mainCharacter.healthBoost(n: 100)
                 }
             }
         }
