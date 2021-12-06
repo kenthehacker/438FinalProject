@@ -20,7 +20,7 @@ class ZigZagEnemy: MovableObject{
     required init(location: CGPoint, size: Int) {
         self.curLoc = location
         self.size = size
-        self.image = UIImage(named: "GalagaEnemy4")
+        self.image = UIImage(named: "GalagaEnemy4")!
         self.hitBound = CGRect(x: location.x, y: location.y, width: CGFloat(size), height: CGFloat(size))
     }
     

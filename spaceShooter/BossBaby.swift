@@ -24,7 +24,7 @@ class BossBaby:MovableObject{
     required init(location: CGPoint, size: Int) {
         self.curLoc = location
         self.size = size
-        self.image = UIImage(named: "GalagaBoss")
+        self.image = UIImage(named: "GalagaBoss")!
         let cgSize = CGFloat(self.size)
         self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
     }

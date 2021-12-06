@@ -315,19 +315,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     //revert the changes
     func createDiagEnemy(){
-        let tempDiag = DiagEnemy(location: CGPoint(x: Int.random(in: 350..<700), y: 0), size: 30)
+        let tempDiag = DiagEnemy(location: CGPoint(x: Int.random(in: 350..<700), y: 0), size: 45)
         gameView.scaledEnemies.append(tempDiag)
     }
     func createZigZagEnemy(){
         let randY = Int.random(in: 0..<200)
         let spawnPoint = CGPoint(x: 0, y: randY)
-        let tempZigZag = ZigZagEnemy(location: spawnPoint, size: 30)
+        let tempZigZag = ZigZagEnemy(location: spawnPoint, size: 45)
         gameView.scaledEnemies.append(tempZigZag)
     }
     func createSpinEnemy(){
         let randX = Int.random(in: 20..<screenWidth-30)
         let spawnPoint = CGPoint(x: randX, y: 60)
-        let tempSpinEnemy = SpinningEnemy(location: spawnPoint, size: 20)
+        let tempSpinEnemy = SpinningEnemy(location: spawnPoint, size: 45)
         gameView.scaledEnemies.append(tempSpinEnemy)
     }
     func createBossBaby(){
