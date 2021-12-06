@@ -12,13 +12,16 @@ class SpinningEnemy:MovableObject{
     var health: Int = 100
     var size: Int
     var hitBound: CGRect
-    var col = UIColor.clear
+    var col = UIColor.white
     var image: UIImage
     var speed = CGFloat(6)
+    var rotSpeed = 100
     var alive = true
-    var radius: Int = 50
-    
+    var radius: Int = 100
+    var theta = 0.0
+    var centre: CGPoint
     required init(location: CGPoint, size: Int) {
+        self.centre = location
         self.curLoc = location
         self.size = size
         self.image = UIImage(named: "GalagaEnemy1")!
@@ -43,9 +46,16 @@ class SpinningEnemy:MovableObject{
     }
     
     func updateLocation(newLoc: CGPoint) {
-        let newX = Double(self.curLoc.x) + Double(self.radius)*cos(Double(speed)*Double.pi / 180.0)
-        let newY = Double(self.curLoc.y) + Double(self.radius)*sin(Double(speed)*Double.pi / 180.0)
+        theta = theta + Double.pi/Double(rotSpeed)
+        if theta > 2*Double.pi{
+            theta = 0
+        }
+        let newX = self.centre.x + Double(self.radius) * cos(theta)
+        let newY = self.centre.y + Double(self.radius) * sin(theta)
+        //let newX = Double(self.curLoc.x) + Double(self.radius)*cos(Double(speed)*Double.pi / 180.0)
+        //let newY = Double(self.curLoc.y) + Double(self.radius)*sin(Double(speed)*Double.pi / 180.0)
         curLoc = CGPoint(x: newX, y: newY)
+        self.hitBound = CGRect(x: curLoc.x, y: curLoc.y, width: CGFloat(size), height: CGFloat(size))
     }
     
     func contains(point: CGPoint) -> Bool {
@@ -55,6 +65,7 @@ class SpinningEnemy:MovableObject{
     }
     func draw() {
         col.setFill()
+        print(self.curLoc)
         self.updateLocation(newLoc: curLoc)
         self.image.draw(in: hitBound)
         let bezPath = UIBezierPath(rect: self.hitBound)

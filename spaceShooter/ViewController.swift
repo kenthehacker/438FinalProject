@@ -96,8 +96,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 if updatingLevel{
                     updatingLevel = false
                     var seq = [Int]()
-                    seq.append(0)
-                    numEnemiesGenerated = 15
+                    seq.append(3)
+                    //numEnemiesGenerated = 15
+                    numEnemiesGenerated = 1
                     enemySequence.append(seq)
                     print("level1")
                 }
@@ -324,9 +325,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         gameView.scaledEnemies.append(tempZigZag)
     }
     func createSpinEnemy(){
-        let randX = Int.random(in: 0..<screenWidth)
-        let spawnPoint = CGPoint(x: randX, y: 0)
-        let tempSpinEnemy = SpinningEnemy(location: spawnPoint, size: 0)
+        //let randX = Int.random(in: 20..<screenWidth-20)
+        let randX = screenWidth/2
+        let spawnPoint = CGPoint(x: randX, y: 60)
+        let tempSpinEnemy = SpinningEnemy(location: spawnPoint, size: 20)
         gameView.scaledEnemies.append(tempSpinEnemy)
     }
     func createBossBaby(){
