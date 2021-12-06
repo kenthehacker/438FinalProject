@@ -17,17 +17,12 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     var visited: Bool = false
     
     @IBOutlet weak var leaderTable: UITableView!
-    
-    // Get username, if nil then generate random user number
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         let textAtt = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAtt
         self.navigationController?.navigationBar.tintColor = UIColor.white;
-        
         setupTableView()
     }
     
@@ -36,18 +31,15 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         let randomNum = Int.random(in: 1001..<10000)
         let alert = UIAlertController(title: "Username for the leaderboard", message: nil, preferredStyle: .alert)
         alert.addTextField()
-            
         alert.addAction(UIAlertAction(title: NSLocalizedString("Default name", comment: "cancel"), style: .default, handler: { [self] _ in
             self.username = "User \(randomNum)"
             data(name: username!, score: score)
         }))
-        
         alert.addAction(UIAlertAction(title: NSLocalizedString("Confirm name", comment: "set name"), style: .default, handler: { [self, unowned alert] _ in
             let answer = alert.textFields![0]
             self.username = answer.text
             data(name: username ?? "User \(randomNum)", score: score)
         }))
-        
         self.present(alert, animated: true, completion: nil)
     }
     

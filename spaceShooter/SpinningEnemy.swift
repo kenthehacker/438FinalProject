@@ -53,11 +53,8 @@ class SpinningEnemy:MovableObject{
         return bezPath.contains(point)
     }
     func draw() {
-        col.setFill()
         self.updateLocation(newLoc: curLoc)
         self.image.draw(in: hitBound)
-        let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.fill()
     }
     
     

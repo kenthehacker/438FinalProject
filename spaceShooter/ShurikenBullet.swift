@@ -14,10 +14,12 @@ class ShurikenBullet: MovableObject{
     var col = UIColor.white
     var speedY = CGFloat(10)
     var speedX = CGFloat(10)
+    var image: UIImage
     required init(location: CGPoint, size: Int) {
         self.size = size
         self.curLoc = location
         let cgSize = CGFloat(self.size)
+        self.image = UIImage(named: "ShurikenBullet")!
         self.hitBound = CGRect(x: location.x, y: location.y, width: cgSize, height: cgSize)
     }
     
@@ -45,11 +47,8 @@ class ShurikenBullet: MovableObject{
         return bezPath.contains(point)
     }
     func draw(){
-        col.setFill()
         self.updateLocation(newLoc: self.curLoc)
-        let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.fill()
-        
+        self.image.draw(in: hitBound)
     }
     func isAlive() -> Bool {
         return true

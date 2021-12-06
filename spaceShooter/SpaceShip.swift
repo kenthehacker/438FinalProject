@@ -53,9 +53,7 @@ class SpaceShip: MovableObject{
         return bezPath.contains(point)
     }
     func draw(){
-        col.setFill()
-        let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.fill()
+        // do nothing
     }
     
     func takeDamage(hp: Int) -> Bool{

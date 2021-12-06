@@ -49,12 +49,7 @@ class EnemyBullet: MovableObject{
         return bezPath.contains(point)
     }
     func draw(){
-        col.setFill()
         self.image.draw(in: hitBound)
         self.updateLocation(newLoc: self.curLoc)
-        let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.fill()
-        //GameView.items.append(EnemyBullet(location: curLoc, size: 20))
-        
     }
 }

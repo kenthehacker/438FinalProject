@@ -68,13 +68,9 @@ class L1Enemy: MovableObject{
     }
     
     func draw() {
-        col.setFill()
         self.updateLocation(newLoc: self.curLoc)
         self.image.draw(in: hitBound)
-        let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.fill()
         enemyBulletTicker = enemyBulletTicker + 1
-        
     }
     
     

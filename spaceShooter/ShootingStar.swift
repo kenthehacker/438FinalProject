@@ -44,7 +44,6 @@ class ShootingStar: MovableObject{
     func draw(){
         self.updateLocation(newLoc: curLoc)
         let colorWithAlpha = UIColor.white.withAlphaComponent(self.colFloat)
-        //UIColor.white.setFill()
         colorWithAlpha.setFill()
         let bezPath = UIBezierPath(rect: self.star)
         bezPath.fill()

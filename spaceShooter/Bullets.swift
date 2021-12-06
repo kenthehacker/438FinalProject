@@ -46,9 +46,6 @@ class Bullet: MovableObject{
         col.setFill()
         self.updateLocation(newLoc: self.curLoc)
         self.image.draw(in: hitBound)
-        let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.fill()
-        
     }
     func isAlive() -> Bool {
         return true

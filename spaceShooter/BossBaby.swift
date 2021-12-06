@@ -54,12 +54,8 @@ class BossBaby:MovableObject{
         return bezPath.contains(point)
     }
     func draw(){
-        col.setFill()
         self.updateLocation(newLoc: self.curLoc)
         self.image.draw(in: hitBound)
-        let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.fill()
-        
     }
     func takeDamage(n: Int){
         self.health = self.health - n

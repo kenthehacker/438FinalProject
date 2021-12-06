@@ -52,12 +52,8 @@ class ZigZagEnemy: MovableObject{
     }
     
     func draw() {
-        
-        col.setFill()
         updateLocation(newLoc: curLoc)
         self.image.draw(in: hitBound)
-        let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.fill()
     }
     
     

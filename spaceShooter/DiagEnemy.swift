@@ -59,11 +59,8 @@ class DiagEnemy:MovableObject{
     }
     
     func draw() {
-        col.setFill()
         self.updateLocation(newLoc: curLoc)
         self.image.draw(in: hitBound)
-        let bezPath = UIBezierPath(rect: self.hitBound)
-        bezPath.fill()
     }
     
     
