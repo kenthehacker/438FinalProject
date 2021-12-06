@@ -136,7 +136,7 @@ final class GameView: UIView{
         i = 0
         while i < bossMagazine.count{
             bossMagazine[i].draw()
-            if bossMagazine[i].getY() > 750{
+            if bossMagazine[i].getY() > 750 || bossMagazine[i].getX() < -40 || bossMagazine[i].getY() < -10 || bossMagazine[i].getX() > 400{
                 bossMagazine.remove(at: i)
                 i = i - 1
             }

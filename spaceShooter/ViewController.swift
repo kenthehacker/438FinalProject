@@ -30,6 +30,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //Level Specific Variables:
     var localLevelTicker = 0
+    var toggleShuriken = false
     var numDiagsGenerated = 0
     var numEnemiesGenerated = 0
     var numFormations = 0
@@ -92,25 +93,68 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         else{
             if currentLevel == 1{
-                fastMode = true
+                fastMode = false
                 if updatingLevel{
                     updatingLevel = false
                     var seq = [Int]()
-                    seq.append(4)
-                    numEnemiesGenerated = 1
+                    seq.append(0)
+                    numEnemiesGenerated = 15
                     enemySequence.append(seq)
-                    print("level1")
+                    
                 }
                 infLevel()
             }
-            else if currentLevel <= 4 {
+            else if currentLevel <= 2 {
                 if updatingLevel{
-                    
+                    numEnemiesGenerated = 0
+                    enemySequence = []
                     localLevelTicker = 0
                     updatingLevel = false
                     fastMode = false
+                    let n = currentLevel+3
+                    for _ in 1...n{ //n
+                        var seq = [Int]()
+                        let enemyNumber = 3+currentLevel-2
+                        for _ in 1...enemyNumber{
+                            let random = Int.random(in: 1..<100)
+                            if random > 50{
+                                var zz = Int.random(in: 0..<4)
+                                if zz == 0 && seq.contains(0){
+                                    zz = 1
+                                }
+                                seq.append(zz)
+                                if zz == 0{
+                                    numEnemiesGenerated = numEnemiesGenerated + 15
+                                }else{
+                                    numEnemiesGenerated = numEnemiesGenerated + 1
+                                }
+                            }
+                        }
+                        if seq.count == 0{
+                            let tempVar = Int.random(in: 0..<3)
+                            seq.append(tempVar)
+                            if tempVar == 0{
+                                numEnemiesGenerated = numEnemiesGenerated + 15
+                            }else{
+                                numEnemiesGenerated = numEnemiesGenerated + 1
+                            }
+                        }
+                        enemySequence.append(seq)
+                    }
+                    print("level "+String(currentLevel))
+                    print(enemySequence)
                     
-                    fastMode = true
+                    
+                }
+                infLevel()
+            }
+            else{
+                if updatingLevel{
+                    enemySequence = []
+                    localLevelTicker = 0
+                    updatingLevel = false
+                    fastMode = false
+                    numEnemiesGenerated = 0
                     let n = currentLevel+3
                     for _ in 1...n{
                         var seq = [Int]()
@@ -131,19 +175,26 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                             }
                         }
                         if seq.count == 0{
-                            seq.append(Int.random(in: 0..<3))
+                            let tempVar = Int.random(in: 0..<3)
+                            seq.append(tempVar)
+                            if tempVar == 0{
+                                numEnemiesGenerated = numEnemiesGenerated + 15
+                            }else{
+                                numEnemiesGenerated = numEnemiesGenerated + 1
+                            }
                         }
                         enemySequence.append(seq)
                     }
-                    print("level "+String(currentLevel))
-                    print(enemySequence)
+                    let bossSeq = [4]
+                    enemySequence.append(bossSeq)
                     
+                    numEnemiesGenerated += 1
                     
                 }
+                if numEnemiesGenerated == 0{
+                    gameView.mainCharacter.takeDamage(hp: 10000)
+                }
                 infLevel()
-            }
-            else{
-                //boss baby
             }
             
             
@@ -159,43 +210,42 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         addBullet()
         scaledShootBullets()
         scaledDidGetHit()
-        //shootBullets()
-        shurikenBullet()
+        shootBullets()
+        if (toggleShuriken){
+            shurikenBullet()
+        }
         didGetHit()
         
         if !pauseSpawn{
             if localLevelTicker < enemySequence.count{
-                print("LocalLev"+String(localLevelTicker))
+                
                 let j = enemySequence[localLevelTicker]
                 for i in j{
                     if i == 0{
-                        print("enemyFormation")
-                        //gameView.isAlive = []
-                        //gameView.enemies = []
                         createEnemyFormation()
                     }
                     if i == 1{
                         createDiagEnemy()
-                        print("diagenemy")
                     }
                     if i == 2{
                         createZigZagEnemy()
-                        print("zigzagEnemy")
+                        
                     }
                     if i == 3{
                         //spin Enemy
                         createSpinEnemy()
-                        print("spinenemy")
+                        
                     }
                     if i == 4{
-                        print("bossbaby")
+                        
                         createBossBaby()
+                        toggleShuriken = true
                         //boss baby
                     }
                 }
             }else{
-                print("set to 0")
                 numEnemiesGenerated = 0
+                toggleShuriken = false
             }
             pauseSpawn = true
         }else{
@@ -210,31 +260,21 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                     pauseSpawn = false
                     //gameView.isAlive = []
                     localLevelTicker += 1
-                    print("moved localLevelTicker "+String(localLevelTicker))
+                    
                 }
-                //print("temp count "+String(tempCount))
+                
             }
         }
         
         if numEnemiesGenerated == 0{
-            print("new level "+String(currentLevel))
+            
             currentLevel += 1
             updatingLevel = true
         }
         
         gameView.setNeedsDisplay()
     }
-    func levelBoss(){
-        tick += 1
-        bulletTimer += 1
-        enemyBulletTimer += 1
-        addBullet()
-        scaledShootBullets()
-        scaledDidGetHit()
-        shootBullets()
-        didGetHit()
-        
-    }
+
     func scaledShootBullets(){
         scaledEnemyBulletTimer = scaledEnemyBulletTimer+1
         if scaledEnemyBulletTimer > 40{
@@ -447,8 +487,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                     return
                 }
                 let location = CGPoint(x: (Int)(gameView.enemies[shootingEnemy].getX()), y: (Int)(gameView.enemies[shootingEnemy].getY()) + 40)
-                let enemy = EnemyBullet(location: location, size: 30)
+                let enemy = EnemyBullet(location: location, size: 40)
                 gameView.enemyMagazine.append(enemy)
+                
             }
         }
         
@@ -507,7 +548,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 let isAlive = gameView.mainCharacter.takeDamage(hp: enemyBullet.getDamage())
                 gameView.enemyMagazine.remove(at: index)
                 
-                //print("player hit, \(gameView.mainCharacter.health)")
+                
                 break
             }
         }
@@ -516,7 +557,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             if bb.contains(point: gameView.mainCharacter.getPoint()){
                 let isAlive = gameView.mainCharacter.takeDamage(hp: 20)
                 gameView.bossMagazine.remove(at: index)
-                //print("player hit, \(gameView.mainCharacter.health)")
+                
                 break
             }
             

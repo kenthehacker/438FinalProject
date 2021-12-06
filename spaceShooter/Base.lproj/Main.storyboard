@@ -137,6 +137,7 @@
                     </view>
                     <connections>
                         <outlet property="gameOverLabel" destination="KRW-VN-ejY" id="xpd-Yc-FFZ"/>
+                        <outlet property="leaderboard_button" destination="zwb-QM-6O2" id="Hoe-9f-Qsd"/>
                         <outlet property="score" destination="mGx-ht-arK" id="6DQ-N7-Gb3"/>
                         <outlet property="scoreLabel" destination="F5e-Vo-oL9" id="3fg-dH-rsj"/>
                     </connections>

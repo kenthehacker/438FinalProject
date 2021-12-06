@@ -42,8 +42,6 @@ class Bullet: MovableObject{
         return bezPath.contains(point)
     }
     func draw(){
-        
-        col.setFill()
         self.updateLocation(newLoc: self.curLoc)
         self.image.draw(in: hitBound)
     }
