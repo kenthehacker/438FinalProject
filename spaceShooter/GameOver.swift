@@ -12,7 +12,6 @@ class GameOver: UIViewController {
     @IBOutlet weak var gameOverLabel: UILabel!
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var leaderboard_button: UIButton!
     
     var displayScore: Int = 0
     var counter = 0
@@ -24,9 +23,6 @@ class GameOver: UIViewController {
         score.textColor = UIColor.white
         score.text = String(displayScore)
         self.navigationItem.setHidesBackButton(true, animated: false)
-        if displayScore == 0 {
-            leaderboard_button.setTitle("View leaderboard", for: .normal)
-        }
     }
     
     /// Navigates user to leaderboard screen

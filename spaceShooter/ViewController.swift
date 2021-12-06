@@ -64,14 +64,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let meap = CGPoint(x: 50, y: 700)
         let spaceShip = SpaceShip(location: meap, size: 30)
 
+        let imageName = "SpaceShipGraphic"
+        let image = UIImage(named: imageName)
+        let life1 = UIImageView(image: image!)
 
+        life1.frame = CGRect(x: 320, y: 750, width: 15, height: 15)
+        life1.tag = 33
+        gameView.addSubview(life1)
+
+        let imageName2 = "SpaceShipGraphic"
+        let image2 = UIImage(named: imageName2)
+        let life2 = UIImageView(image: image2!)
+
+        life2.frame = CGRect(x: 340, y: 750, width: 15, height: 15)
+        life2.tag = 66
+        gameView.addSubview(life2)
+
+        gameView.setNeedsDisplay()
         gameView.mainCharacter = spaceShip
-        
-        //REMOVE THIS
-        //createEnemyFormation()
-        
-        //originally said start level1()
-        // Do any additional setup after loading the view.
+
     }
     
     @objc func update(){
@@ -549,7 +560,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 let isAlive = gameView.mainCharacter.takeDamage(hp: enemyBullet.getDamage())
                 gameView.enemyMagazine.remove(at: index)
                 
-                
+                if let viewWithTag = gameView.viewWithTag(33) {
+                        viewWithTag.removeFromSuperview()
+                        gameView.setNeedsDisplay()
+                    }
+
+                else if let viewWithTag = gameView.viewWithTag(66) {
+                    viewWithTag.removeFromSuperview()
+                    gameView.setNeedsDisplay()
+
+                }
                 break
             }
         }
@@ -559,6 +579,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 let isAlive = gameView.mainCharacter.takeDamage(hp: 10)
                 gameView.bossMagazine.remove(at: index)
                 
+                if let viewWithTag = gameView.viewWithTag(33) {
+                        viewWithTag.removeFromSuperview()
+                        gameView.setNeedsDisplay()
+                    }
+
+                else if let viewWithTag = gameView.viewWithTag(66) {
+                    viewWithTag.removeFromSuperview()
+                    gameView.setNeedsDisplay()
+
+                }
                 break
             }
             
@@ -567,7 +597,29 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         for i in gameView.upgrades{
             if gameView.mainCharacter.contains(point: i.curLoc){
                 if i.upgrade == .healthBoost{
-                    gameView.mainCharacter.healthBoost(n: 10)
+                    if let viewWithTag = gameView.viewWithTag(33), let viewWithTag2 = gameView.viewWithTag(66){
+                        }
+                    else if let viewWithTag = gameView.viewWithTag(66) {
+                        gameView.mainCharacter.healthBoost(n: 10)
+                        let imageName = "SpaceShipGraphic"
+                        let image = UIImage(named: imageName)
+                        let life1 = UIImageView(image: image!)
+
+                        life1.frame = CGRect(x: 320, y: 750, width: 15, height: 15)
+                        life1.tag = 33
+                        gameView.addSubview(life1)
+                    }
+                    else {
+                        gameView.mainCharacter.healthBoost(n: 10)
+                        let imageName2 = "SpaceShipGraphic"
+                        let image2 = UIImage(named: imageName2)
+                        let life2 = UIImageView(image: image2!)
+
+                        life2.frame = CGRect(x: 340, y: 750, width: 15, height: 15)
+                        life2.tag = 66
+                        gameView.addSubview(life2)
+                    }
+                    
                 }
                 else if i.upgrade == .fasterFire{
                     fastMode = true
